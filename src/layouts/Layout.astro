@@ -1,12 +1,25 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Pads Banger | Deep Space Portfolio',
+	description = 'A cinematic deep-space portfolio with refined interface framing, orbital geometry, and premium sci-fi restraint.',
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
@@ -14,10 +27,36 @@
 </html>
 
 <style>
+	:root {
+		color-scheme: dark;
+		font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+		background:
+			radial-gradient(circle at 50% 20%, rgba(138, 181, 255, 0.12), transparent 22%),
+			radial-gradient(circle at 10% 10%, rgba(255, 219, 171, 0.08), transparent 16%),
+			linear-gradient(180deg, #04070d 0%, #08101b 40%, #0a1422 100%);
+		background-color: #04070d;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
 	html,
 	body {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		min-width: 320px;
+		min-height: 100%;
 	}
-</style>
+
+	body {
+		color: #edf3ff;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	a {
+		color: inherit;
+	}
+ </style>
