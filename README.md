@@ -1,39 +1,46 @@
-# michal-lach.pl [![Build Status](https://travis-ci.org/padsbanger/padsbanger.github.io.svg?branch=master)](https://travis-ci.org/padsbanger/padsbanger.github.io)
-Source code for page [michal-lach.pl](http://michal-lach.pl/ "michal-lach.pl")
+# Astro Starter Kit: Basics
 
-Build on top of Jekyll, Less and Grunt.js.
-
-## Installing
-
-Install Ruby and get Jekyll:
-
-```ruby
-gem update
-gem install jekyll
+```sh
+npm create astro@latest -- --template basics
 ```
 
-Install Node.js and Grunt:
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-```js
-npm install -g grunt
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
 ```
 
-Install gem for Jekyll
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-```ruby
-gem install jekyll-seo-tag jekyll-paginate
-```
+## 🧞 Commands
 
-## Running
+All commands are run from the root of the project, from a terminal:
 
-Go to main directory (where Grunfile.js is) and type:
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-```js
-grunt
-```
+## 👀 Want to learn more?
 
-## Development
-
-To add new projects create new *.html* file in *_posts* directory.
-
-Images goes to *img* and styles to *src/styles/less*.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
