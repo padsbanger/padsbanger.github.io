@@ -92,16 +92,16 @@ const systems = [
 				</div>
 
 				<div class="scanner-panel">
-					<div class="scanner-graphic" aria-hidden="true">
+					<div class="scanner-graphic">
 						<div class="ring ring-1"></div>
 						<div class="ring ring-2"></div>
 						<div class="ring ring-3"></div>
 						<div class="axis axis-h"></div>
 						<div class="axis axis-v"></div>
-						<div class="sun-core"></div>
-						<div class="node node-1"></div>
-						<div class="node node-2"></div>
-						<div class="node node-3"></div>
+						<button class="sun-core scanner-target" type="button" aria-label="Activate sun"></button>
+						<button class="node node-1 scanner-target" type="button" aria-label="Activate planet Aurelia"></button>
+						<button class="node node-2 scanner-target" type="button" aria-label="Activate planet Vesper"></button>
+						<button class="node node-3 scanner-target" type="button" aria-label="Activate planet Khepri"></button>
 						<div class="scan-line"></div>
 					</div>
 					<div class="scanner-readout">
@@ -397,7 +397,7 @@ const systems = [
 		line-height: 0.98;
 		font-weight: 500;
 		max-width: 12ch;
-		margin-bottom: 1rem;
+		margin: 1.5rem 0;
 	}
 
 	h2 {
@@ -405,13 +405,13 @@ const systems = [
 		line-height: 1.05;
 		font-weight: 500;
 		max-width: 15ch;
-		margin-bottom: 0.85rem;
+		margin: 1.5rem 0;
 	}
 
 	h3 {
 		font-size: 1.3rem;
 		font-weight: 500;
-		margin-bottom: 0.75rem;
+		margin: 1.5rem 0;
 	}
 
 	.lede,
@@ -480,6 +480,13 @@ const systems = [
 		overflow: hidden;
 	}
 
+	.scanner-target {
+		padding: 0;
+		border: 0;
+		cursor: pointer;
+		background: transparent;
+	}
+
 	.ring,
 	.axis,
 	.sun-core,
@@ -546,6 +553,20 @@ const systems = [
 		z-index: 3;
 	}
 
+	.sun-core:hover,
+	.sun-core:focus-visible,
+	.node:hover,
+	.node:focus-visible {
+		outline: none;
+		filter: brightness(1.15);
+	}
+
+	.sun-core.is-activated {
+		animation:
+			sun-pulse 4.2s ease-in-out infinite,
+			sun-activate 900ms ease-in-out;
+	}
+
 	.sun-core::before,
 	.sun-core::after {
 		content: '';
@@ -586,6 +607,16 @@ const systems = [
 			rotate(calc(var(--orbit-angle) * -1));
 		animation: orbit-spin var(--orbit-duration) linear infinite;
 		z-index: 2;
+		transition: box-shadow 180ms ease;
+	}
+
+	.node.is-activated {
+		animation:
+			orbit-spin var(--orbit-duration) linear infinite,
+			planet-activate 900ms ease-in-out;
+		box-shadow:
+			0 0 0 0.18rem rgba(220, 231, 250, 0.12),
+			0 0 18px rgba(220, 231, 250, 0.8);
 	}
 
 	.node-1 {
@@ -761,6 +792,48 @@ const systems = [
 		}
 	}
 
+	@keyframes sun-activate {
+		0%,
+		100% {
+			transform: translate(-50%, -50%) scale(1);
+		}
+
+		20% {
+			transform: translate(calc(-50% - 0.04rem), calc(-50% + 0.02rem)) scale(1.05);
+		}
+
+		40% {
+			transform: translate(calc(-50% + 0.04rem), calc(-50% - 0.03rem)) scale(1.1);
+		}
+
+		60% {
+			transform: translate(calc(-50% - 0.03rem), calc(-50% - 0.02rem)) scale(1.07);
+		}
+
+		80% {
+			transform: translate(calc(-50% + 0.02rem), calc(-50% + 0.03rem)) scale(1.03);
+		}
+	}
+
+	@keyframes planet-activate {
+		0%,
+		100% {
+			filter: brightness(1);
+		}
+
+		25% {
+			filter: brightness(1.16);
+		}
+
+		50% {
+			filter: brightness(1.32);
+		}
+
+		75% {
+			filter: brightness(1.14);
+		}
+	}
+
 	@media (max-width: 980px) {
 		.frame-header,
 		.frame-body,
@@ -810,3 +883,18 @@ const systems = [
 		}
 	}
 </style>
+
+<script>
+	const scannerTargets = document.querySelectorAll('.scanner-target');
+
+	const restartActivation = (target) => {
+		const activeClass = 'is-activated';
+		target.classList.remove(activeClass);
+		void target.offsetWidth;
+		target.classList.add(activeClass);
+	};
+
+	scannerTargets.forEach((target) => {
+		target.addEventListener('click', () => restartActivation(target));
+	});
+</script>
