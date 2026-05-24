@@ -5,42 +5,70 @@ import '../styles/home.css';
 
 const featuredProjects = [
 	{
-		code: 'A-01',
-		title: 'Constellation Archive',
-		type: 'Portfolio platform',
+		code: 'N-24',
+		title: 'Nordea',
+		type: 'Senior Frontend Engineer / May 2024 - Present',
 		description:
-			'Case studies, narrative project pages, and modular content structures presented through a clean command-interface layout.',
-		stats: ['Astro', 'Content systems', 'UI direction'],
+			'Developing internal platforms for API onboarding, enterprise services, secure AI access management, and Redis tooling across engineering teams.',
+		stats: ['Enterprise platforms', 'AI tooling', 'Security'],
 	},
 	{
-		code: 'B-12',
-		title: 'Frontier Relay',
-		type: 'Launch page system',
+		code: 'M-20',
+		title: 'MasterBorn',
+		type: 'Frontend / Lead Frontend Engineer / Aug 2020 - Apr 2024',
 		description:
-			'A reusable frontend framework for product pages that need a premium tone, fast performance, and confident information hierarchy.',
-		stats: ['Responsive UI', 'Design systems', 'Build delivery'],
+			'Led React and TypeScript frontend work for payment processing, sports video streaming, cycling analytics, and medical device inspection workflows.',
+		stats: ['React', 'TypeScript', 'Architecture'],
 	},
 	{
-		code: 'C-07',
-		title: 'Surveyor Frame',
-		type: 'Brand redesign',
+		code: 'J-19',
+		title: 'JIT Team',
+		type: 'Frontend Engineer / Feb 2019 - Jul 2020',
 		description:
-			'An interface refresh focused on orientation, visual discipline, and presenting dense information with calm futuristic structure.',
-		stats: ['Narrative UX', 'Art direction', 'Frontend engineering'],
+			'Built hybrid PWA applications for ship inspection processes and frontend systems for smart city and IoT management platforms.',
+		stats: ['PWA', 'IoT', 'Inspection tools'],
+	},
+	{
+		code: 'S-16',
+		title: 'Schibsted Tech Polska',
+		type: 'UI Developer / Lead Frontend Developer / Jul 2016 - Jan 2019',
+		description:
+			'Led frontend development for booking and marketplace platforms, recommendation features, and reusable component architecture.',
+		stats: ['Marketplaces', 'Components', 'Leadership'],
+	},
+	{
+		code: 'E-15',
+		title: 'EPAM Systems',
+		type: 'UI Software Developer / May 2015 - Jun 2016',
+		description:
+			'Worked on internal enterprise frontend projects, performed code reviews, and contributed to shared development standards.',
+		stats: ['Enterprise UI', 'Reviews', 'Standards'],
+	},
+	{
+		code: 'M-13',
+		title: 'Misys',
+		type: 'Software Developer / Aug 2013 - Apr 2015',
+		description:
+			'Developed frontend features for financial risk analysis software, maintained cross-browser compatibility, and introduced end-to-end testing practices.',
+		stats: ['Fintech', 'E2E testing', 'Compatibility'],
 	},
 ];
 
 const systems = [
-	{ label: 'Navigation', value: 'Clear hierarchy and high-legibility HUD structure' },
-	{ label: 'Motion', value: 'Soft transitions, restrained emphasis, no wasted movement' },
-	{ label: 'Build', value: 'Astro, React, modern CSS, reusable components' },
-	{ label: 'Delivery', value: 'Fast pages, responsive layouts, production-ready code' },
+	{ label: 'Frontend', value: 'React, Next.js, TypeScript, JavaScript, HTML5, CSS3' },
+	{ label: 'State', value: 'Redux Toolkit, Zustand, MobX, Context API, RTK Query' },
+	{ label: 'APIs', value: 'REST, GraphQL, Apollo Client, Axios, Fetch' },
+	{ label: 'Styling', value: 'Tailwind CSS, Styled Components, Emotion, CSS Modules, Sass' },
+	{ label: 'Testing', value: 'Jest, React Testing Library, Vitest, Protractor' },
+	{ label: 'Tooling', value: 'Vite, Webpack, Docker, Git, GitHub, Jenkins, TeamCity' },
+	{ label: 'AI', value: 'Ollama, Copilot, vLLM, ollama.cpp' },
+	
 ];
 ---
 
 <Layout
-	title="Pads Banger | Interface Portfolio"
-	description="A frontend portfolio styled like a deep-space command interface with HUD panels, telemetry framing, and in-game sci-fi menu energy."
+	title="Michal Lach | Senior Frontend Engineer"
+	description="Senior Frontend Engineer based in Gdansk, Poland, specializing in React, TypeScript, frontend architecture, design systems, and scalable web applications."
 >
 	<div class="three-backdrop" id="three-backdrop" aria-hidden="true"></div>
 	<main class="shell">
@@ -50,14 +78,14 @@ const systems = [
 					<span></span>
 				</div>
 				<div>
-					<p class="label">Pads Banger</p>
-					<p class="subtle">Frontend systems / interface direction / visual engineering</p>
+					<p class="label">Michal Lach</p>
+					<p class="subtle">Frontend Engineer / React / TypeScript / architecture</p>
 				</div>
 			</div>
 
 			<nav class="nav-tabs" aria-label="Primary">
 				<a class="is-active" href="#overview">Overview</a>
-				<a href="#missions">Missions</a>
+				<a href="#missions">Experience</a>
 				<a href="#systems">Systems</a>
 				<a href="#contact">Contact</a>
 			</nav>
@@ -67,30 +95,30 @@ const systems = [
 			<div class="frame-header intro-reveal">
 				<div class="header-block">
 					<p class="label">Operator</p>
-					<strong>Pads Banger</strong>
+					<strong>Michal Lach</strong>
 				</div>
 				<div class="header-block">
 					<p class="label">Status</p>
-					<strong>Available for frontend commissions</strong>
+					<strong>Frontend Engineer avaiable for forward deployment</strong>
 				</div>
 				<div class="header-block">
 					<p class="label">Region</p>
-					<strong>Web / portfolio / launch systems</strong>
+					<strong>Gdynia, Poland / Earth / Sol System</strong>
 				</div>
 			</div>
 
 			<div class="frame-body">
 				<div class="hero-copy intro-reveal">
 					<p class="eyebrow">Navigation Summary</p>
-					<h1>Designing websites that feel like navigable systems, not decorative pages.</h1>
+					<h1>Building scalable frontend systems for complex products.</h1>
 					<p class="lede">
-						I build frontend experiences with clear structure, precise pacing, and a premium
-						sci-fi interface language. The focus is on orientation, readability, and atmosphere
-						without clutter.
+						Senior Frontend Engineer focused on React, TypeScript, performance optimization,
+						component design systems, state management, and developer experience across fintech,
+						AI, enterprise, healthcare, and media products.
 					</p>
 					<div class="action-row">
-						<a class="button-primary" href="#missions">Open Mission Log</a>
-						<a class="button-secondary" href="#contact">Transmit Inquiry</a>
+						<a class="button-primary" href="#missions">Open Experience Log</a>
+						<a class="button-secondary" href="#contact">Contact</a>
 					</div>
 				</div>
 
@@ -126,15 +154,15 @@ const systems = [
 					<div class="scanner-readout intro-reveal">
 						<div>
 							<p class="label">Discipline</p>
-							<strong>Frontend design-engineering</strong>
+							<strong>Frontend architecture and product engineering</strong>
 						</div>
 						<div>
 							<p class="label">Stack</p>
-							<strong>Astro / React / CSS</strong>
+							<strong>React / Next.js / TypeScript / modern CSS</strong>
 						</div>
 						<div>
 							<p class="label">Priority</p>
-							<strong>Elegant, fast, production-ready interfaces</strong>
+							<strong>Maintainable, scalable, production-grade web applications</strong>
 						</div>
 					</div>
 				</div>
@@ -144,21 +172,21 @@ const systems = [
 		<section class="overview-grid intro-reveal">
 			<article class="panel info-panel">
 				<p class="label">Profile</p>
-				<p>Portfolio sites, brand pages, and interface-heavy experiences with calm futuristic structure.</p>
+				<p>10+ years delivering production frontend systems with product, backend, and design teams in agile environments.</p>
 			</article>
 			<article class="panel info-panel">
-				<p class="label">Visual Language</p>
-				<p>Fine rules, circular diagrams, segmented modules, high legibility, and restrained glow.</p>
+				<p class="label">Industries</p>
+				<p>Fintech, AI platforms, enterprise tooling, healthcare workflows, media products, IoT, and smart city systems.</p>
 			</article>
 			<article class="panel info-panel">
-				<p class="label">Build Standard</p>
-				<p>Responsive systems, maintainable code, clear content hierarchy, and controlled motion.</p>
+				<p class="label">Education</p>
+				<p>Bachelor's Degree in Information Technology, plus Cambridge First Certificate in English at B2 level.</p>
 			</article>
 		</section>
 
 		<section class="section-head intro-reveal" id="missions">
-			<p class="eyebrow">Mission Log</p>
-			<h2>Selected projects displayed like active records in a navigation console.</h2>
+			<p class="eyebrow">Experience Log</p>
+			<h2>Professional roles mapped as active records in a navigation console.</h2>
 		</section>
 
 		<section class="mission-grid intro-reveal">
@@ -183,11 +211,10 @@ const systems = [
 		<section class="systems-layout intro-reveal" id="systems">
 			<div class="section-head compact">
 				<p class="eyebrow">Systems</p>
-				<h2>Every layer should help the user know where they are and what matters.</h2>
+				<h2>Technical toolkit for scalable frontend delivery.</h2>
 				<p class="lede compact-text">
-					The style is interface-first: flatter surfaces, clearer segmentation, stronger data
-					labeling, and less decorative drama. It feels closer to a ship menu than a marketing
-					landing page.
+					Strong focus on component architecture, state management, performance, testing,
+					developer experience, and collaboration across design and engineering workflows.
 				</p>
 			</div>
 
@@ -204,15 +231,16 @@ const systems = [
 		<section class="panel contact-panel intro-reveal" id="contact">
 			<div>
 				<p class="eyebrow">Contact Uplink</p>
-				<h2>Ready to build something that feels like a real interface?</h2>
+				<h2>Available for frontend engineering conversations.</h2>
 			</div>
 			<div class="contact-meta">
 				<div class="contact-links">
-					<a class="button-primary" href="mailto:hello@padsbanger.com">Email</a>
+					<a class="button-primary" href="mailto:kontakt@michal-lach.pl">Email</a>
+					<a class="button-secondary" href="https://michal-lach.pl" target="_blank" rel="noreferrer">Website</a>
 					<a class="button-secondary" href="https://github.com/padsbanger" target="_blank" rel="noreferrer">GitHub</a>
 					<a class="button-secondary" href="https://www.linkedin.com/in/michal-lach/" target="_blank" rel="noreferrer">LinkedIn</a>
 				</div>
-				<p class="subtle">`mailto:hello@padsbanger.com` / `github.com/padsbanger` / `linkedin.com/in/michal-lach/`</p>
+				<p class="subtle">`kontakt@michal-lach.pl` / `michal-lach.pl` / `github.com/padsbanger` / `linkedin.com/in/michal-lach/`</p>
 			</div>
 		</section>
 	</main>
