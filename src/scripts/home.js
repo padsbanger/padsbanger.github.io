@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 const backdrop = document.querySelector('#three-backdrop');
 const scannerGraphic = document.querySelector('#scanner-graphic');
 const scannerThreeHost = document.querySelector('#scanner-three');
@@ -14,6 +12,7 @@ const scannerDisturbance = document.querySelector('#scanner-disturbance');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cleanups = [];
 let signalLineTimer = 0;
+let scannerNavigationTimer = 0;
 
 const restartActivation = (target) => {
 	const activeClass = 'is-activated';
@@ -71,14 +70,27 @@ const setSelectedPlanet = (target) => {
 	flashSignalLine();
 };
 
+const navigateFromScanner = (target) => {
+	const sectionId = target.dataset.section;
+	if (!sectionId) return;
+	window.clearTimeout(scannerNavigationTimer);
+	scannerNavigationTimer = window.setTimeout(() => {
+		document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}, 180);
+};
+
 scannerPlanets.forEach((planet) => {
-	planet.addEventListener('click', () => setSelectedPlanet(planet));
+	planet.addEventListener('click', () => {
+		setSelectedPlanet(planet);
+		navigateFromScanner(planet);
+	});
 });
 
 scannerSun?.addEventListener('click', () => {
 	scannerPlanets.forEach((planet) => planet.classList.remove('is-selected'));
 	window.clearTimeout(signalLineTimer);
 	updateSignalLine();
+	navigateFromScanner(scannerSun);
 });
 
 if (scannerGraphic) {
@@ -134,6 +146,7 @@ if (!prefersReducedMotion) {
 		window.clearTimeout(initialPulse);
 		window.clearTimeout(initialFlare);
 		window.clearTimeout(signalLineTimer);
+		window.clearTimeout(scannerNavigationTimer);
 	});
 }
 
@@ -161,6 +174,9 @@ if (scannerGraphic && scannerBootOverlay && scannerBootStatus && !prefersReduced
 		bootTimers.forEach((timer) => window.clearTimeout(timer));
 	});
 }
+
+const startThreeScenes = async () => {
+	const THREE = await import('three');
 
 if (scannerGraphic && scannerThreeHost) {
 	const scene = new THREE.Scene();
@@ -446,6 +462,21 @@ if (backdrop && !prefersReducedMotion) {
 		glowB.material.dispose();
 		renderer.dispose();
 	});
+}
+};
+
+if (scannerThreeHost || (backdrop && !prefersReducedMotion)) {
+	const scheduleThreeScenes = () => {
+		startThreeScenes().catch((error) => {
+			console.error('Unable to start Three.js scenes', error);
+		});
+	};
+
+	if ('requestIdleCallback' in window) {
+		window.requestIdleCallback(scheduleThreeScenes, { timeout: 1600 });
+	} else {
+		window.setTimeout(scheduleThreeScenes, 350);
+	}
 }
 
 window.addEventListener(

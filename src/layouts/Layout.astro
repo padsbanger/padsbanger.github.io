@@ -15,7 +15,6 @@ const {
 
 const siteUrl = Astro.site ?? new URL('https://michal-lach.pl');
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
-const defaultSocialImage = new URL('/favicon.svg', siteUrl).toString();
 const jsonLd = structuredData ? JSON.stringify(structuredData) : null;
 ---
 
@@ -25,6 +24,7 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : null;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
 		<link rel="icon" href="/favicon.ico" />
 		<link rel="canonical" href={canonicalUrl} />
 		<meta name="generator" content={Astro.generator} />
@@ -38,12 +38,12 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : null;
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={defaultSocialImage} />
-		<meta property="og:image:alt" content="Michal Lach frontend engineer portfolio" />
-		<meta name="twitter:card" content="summary" />
+		<meta property="og:image:alt" content="Michal Lach senior frontend engineer portfolio preview" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={defaultSocialImage} />
 		<title>{title}</title>
 		{jsonLd && <script type="application/ld+json" set:html={jsonLd}></script>}
 	</head>

@@ -212,6 +212,7 @@ const structuredData = [
 					<div class="action-row">
 						<a class="button-primary" href="#missions">Open Experience Log</a>
 						<a class="button-secondary" href="#contact">Contact</a>
+						<a class="button-secondary" href="/cv.pdf" target="_blank" rel="noreferrer">View CV</a>
 					</div>
 				</div>
 
@@ -238,10 +239,10 @@ const structuredData = [
 							</div>
 							<div class="scanner-disturbance" id="scanner-disturbance"></div>
 						</div>
-						<button class="sun-core scanner-target" type="button" data-target="sun" aria-label="Activate sun"></button>
-						<button class="node node-1 scanner-target" type="button" data-target="aurelia" aria-label="Activate planet Aurelia"></button>
-						<button class="node node-2 scanner-target" type="button" data-target="vesper" aria-label="Activate planet Vesper"></button>
-						<button class="node node-3 scanner-target" type="button" data-target="khepri" aria-label="Activate planet Khepri"></button>
+						<button class="sun-core scanner-target" type="button" data-target="sun" data-section="overview" aria-label="Open overview section"></button>
+						<button class="node node-1 scanner-target" type="button" data-target="aurelia" data-section="missions" aria-label="Open experience section"></button>
+						<button class="node node-2 scanner-target" type="button" data-target="vesper" data-section="side-projects" aria-label="Open side projects section"></button>
+						<button class="node node-3 scanner-target" type="button" data-target="khepri" data-section="systems" aria-label="Open systems section"></button>
 						<div class="scan-line"></div>
 					</div>
 					<div class="scanner-readout intro-reveal">
@@ -392,6 +393,7 @@ const structuredData = [
 				<div class="contact-links">
 					<a class="button-primary" href="mailto:kontakt@michal-lach.pl">Transmit Email</a>
 					<a class="button-secondary" href="https://www.linkedin.com/in/michal-lach/" target="_blank" rel="noreferrer">Open LinkedIn</a>
+					<a class="button-secondary" href="/cv.pdf" target="_blank" rel="noreferrer">View CV</a>
 				</div>
 			</div>
 		</section>
