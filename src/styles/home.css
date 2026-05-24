@@ -62,7 +62,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0 2rem;
 }
 
 .brand {
@@ -767,6 +767,7 @@ h3 {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 0.65rem;
+    flex-direction: column;
 }
 
 .mission-code {
