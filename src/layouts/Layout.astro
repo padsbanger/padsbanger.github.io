@@ -2,12 +2,21 @@
 interface Props {
 	title?: string;
 	description?: string;
+	keywords?: string[];
+	structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
 	title = 'Michal Lach | Senior Frontend Engineer',
 	description = 'Senior Frontend Engineer specializing in React, TypeScript, frontend architecture, design systems, and scalable web applications.',
+	keywords = [],
+	structuredData,
 } = Astro.props;
+
+const siteUrl = Astro.site ?? new URL('https://michal-lach.pl');
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const defaultSocialImage = new URL('/favicon.svg', siteUrl).toString();
+const jsonLd = structuredData ? JSON.stringify(structuredData) : null;
 ---
 
 <!doctype html>
@@ -17,9 +26,26 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="canonical" href={canonicalUrl} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta name="author" content="Michal Lach" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="theme-color" content="#08101b" />
+		{keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Michal Lach" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={defaultSocialImage} />
+		<meta property="og:image:alt" content="Michal Lach frontend engineer portfolio" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={defaultSocialImage} />
 		<title>{title}</title>
+		{jsonLd && <script type="application/ld+json" set:html={jsonLd}></script>}
 	</head>
 	<body>
 		<slot />

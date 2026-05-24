@@ -64,7 +64,7 @@ const sideProjects = [
 	{
 		code: 'GH-01',
 		title: 'Omnia',
-		status: 'TypeScript / active',
+		status: 'TypeScript',
 		description:
 			'Desktop workspace organizer that unifies web-based apps like messaging, email, and productivity tools into one focused multitasking environment.',
 		tags: ['Electron', 'Desktop app', 'Productivity'],
@@ -72,8 +72,8 @@ const sideProjects = [
 	},
 	{
 		code: 'GH-02',
-		title: 'Bandcamp Achiver',
-		status: 'Rust / active',
+		title: 'Bandcamp Archiver',
+		status: 'Rust',
 		description:
 			'CLI tool for archiving Bandcamp albums, built as a focused utility around collection preservation and local music workflows.',
 		tags: ['Rust', 'CLI', 'Music archive'],
@@ -82,7 +82,7 @@ const sideProjects = [
 	{
 		code: 'GH-03',
 		title: 'Spotify TUI',
-		status: 'TypeScript / active',
+		status: 'TypeScript',
 		description:
 			'Simple terminal client for Spotify, exploring command-line music control through a lightweight text interface.',
 		tags: ['TypeScript', 'Terminal UI', 'Spotify'],
@@ -100,11 +100,67 @@ const systems = [
 	{ label: 'AI', value: 'Ollama, Copilot, vLLM, ollama.cpp' },
 	
 ];
+
+const seoKeywords = [
+	'Michal Lach',
+	'Senior Frontend Engineer',
+	'Frontend Engineer Poland',
+	'React developer',
+	'TypeScript developer',
+	'Next.js developer',
+	'frontend architecture',
+	'design systems',
+	'web performance',
+	'Gdansk frontend engineer',
+];
+
+const structuredData = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Person',
+		name: 'Michal Lach',
+		url: 'https://michal-lach.pl',
+		jobTitle: 'Senior Frontend Engineer',
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Gdynia',
+			addressCountry: 'PL',
+		},
+		email: 'mailto:kontakt@michal-lach.pl',
+		sameAs: [
+			'https://github.com/padsbanger',
+			'https://www.linkedin.com/in/micha%C5%82-lach-98854a6b/',
+		],
+		alumniOf: {
+			'@type': 'CollegeOrUniversity',
+			name: 'Polish-Japanese Academy of Information Technology',
+		},
+		knowsAbout: [
+			'React',
+			'Next.js',
+			'TypeScript',
+			'Frontend architecture',
+			'Design systems',
+			'Web performance',
+			'Developer experience',
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: 'Michal Lach',
+		url: 'https://michal-lach.pl',
+		description:
+			'Portfolio website of Michal Lach, Senior Frontend Engineer specializing in React, TypeScript, frontend architecture, and scalable web applications.',
+	},
+];
 ---
 
 <Layout
 	title="Michal Lach | Senior Frontend Engineer"
 	description="Senior Frontend Engineer based in Gdansk, Poland, specializing in React, TypeScript, frontend architecture, design systems, and scalable web applications."
+	keywords={seoKeywords}
+	structuredData={structuredData}
 >
 	<div class="three-backdrop" id="three-backdrop" aria-hidden="true"></div>
 	<main class="shell">
@@ -147,7 +203,7 @@ const systems = [
 			<div class="frame-body">
 				<div class="hero-copy intro-reveal">
 					<p class="eyebrow">Navigation Summary</p>
-					<h1>Building scalable frontend systems for complex products.</h1>
+					<h1>Michal Lach builds scalable frontend systems for complex products.</h1>
 					<p class="lede">
 						Senior Frontend Engineer focused on React, TypeScript, performance optimization,
 						component design systems, state management, and developer experience across fintech,
@@ -240,7 +296,7 @@ const systems = [
 							<span>{stat}</span>
 						))}
 					</div>
-					<a class="text-link" href="#contact" href={project.link}>Open channel</a>
+					<a class="text-link" href={project.link} target="_blank" rel="noreferrer">Open company</a>
 				</article>
 			))}
 		</section>
