@@ -16,6 +16,14 @@ const {
 const siteUrl = Astro.site ?? new URL('https://michal-lach.pl');
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const jsonLd = structuredData ? JSON.stringify(structuredData) : null;
+const googleAnalyticsId = 'G-64VD0PZRNM';
+const googleAnalyticsSnippet =
+	googleAnalyticsId && /^(G|GT|AW)-[A-Z0-9-]+$/i.test(googleAnalyticsId)
+		? `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', ${JSON.stringify(googleAnalyticsId)});`
+		: null;
 ---
 
 <!doctype html>
@@ -46,6 +54,14 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : null;
 		<meta name="twitter:description" content={description} />
 		<title>{title}</title>
 		{jsonLd && <script type="application/ld+json" set:html={jsonLd}></script>}
+		{
+			googleAnalyticsSnippet && (
+				<>
+					<script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+					<script is:inline set:html={googleAnalyticsSnippet}></script>
+				</>
+			)
+		}
 	</head>
 	<body>
 		<slot />
