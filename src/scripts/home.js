@@ -128,9 +128,9 @@ if (!prefersReducedMotion) {
 		}
 		void scannerComet.offsetWidth;
 		scannerComet.classList.add('is-active');
-		window.setTimeout(() => scannerDisturbance.classList.add('is-active'), 620);
-		window.setTimeout(() => scannerDisturbance.classList.remove('is-active'), 1550);
-		window.setTimeout(() => scannerComet.classList.remove('is-active'), 2200);
+		window.setTimeout(() => scannerDisturbance.classList.add('is-active'), 1050);
+		window.setTimeout(() => scannerDisturbance.classList.remove('is-active'), 1850);
+		window.setTimeout(() => scannerComet.classList.remove('is-active'), 2600);
 	};
 
 	const pulseInterval = window.setInterval(triggerPlanetPulse, 6200);
