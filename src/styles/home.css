@@ -508,7 +508,9 @@ h3 {
 }
 
 .sun-core.is-flaring {
-    animation: sun-pulse 4.2s ease-in-out infinite;
+    animation:
+        sun-pulse 4.2s ease-in-out infinite,
+        sun-flare-core 1.65s ease-out;
 }
 
 .sun-core::before,
@@ -534,7 +536,11 @@ h3 {
 }
 
 .sun-core.is-flaring::after {
-    animation: sun-flare-burst 1.45s ease-out;
+    animation: sun-flare-burst 1.65s ease-out;
+}
+
+.sun-core.is-flaring::before {
+    animation: sun-flare-ring 1.65s ease-out;
 }
 
 .node {
@@ -627,10 +633,6 @@ h3 {
     --orbit-angle: 48deg;
     width: 0.44rem;
     height: 0.44rem;
-    background: #f6d48f;
-    box-shadow:
-        0 0 0 0.08rem rgba(246, 212, 143, 0.08),
-        0 0 12px rgba(246, 212, 143, 0.58);
 }
 
 .scan-line {
@@ -1098,21 +1100,61 @@ h3 {
     }
 }
 
-@keyframes sun-flare-burst {
+@keyframes sun-flare-core {
     0%,
     100% {
-        opacity: 0.2;
-        transform: translate(-50%, -50%) scale(0.9);
+        box-shadow:
+            0 0 24px rgba(246, 212, 143, 0.95),
+            0 0 54px rgba(246, 212, 143, 0.52),
+            0 0 90px rgba(246, 212, 143, 0.24);
     }
 
-    45% {
-        opacity: 0.65;
-        transform: translate(-50%, -50%) scale(1.35);
+    22% {
+        box-shadow:
+            0 0 34px rgba(255, 245, 211, 1),
+            0 0 76px rgba(246, 212, 143, 0.76),
+            0 0 128px rgba(246, 212, 143, 0.34);
+    }
+
+    46% {
+        box-shadow:
+            0 0 30px rgba(255, 245, 211, 0.96),
+            0 0 68px rgba(246, 212, 143, 0.64),
+            0 0 110px rgba(246, 212, 143, 0.28);
+    }
+}
+
+@keyframes sun-flare-ring {
+    0% {
+        opacity: 0.42;
+        transform: translate(-50%, -50%) scale(0.88);
+    }
+
+    28% {
+        opacity: 0.82;
+        transform: translate(-50%, -50%) scale(1.22);
     }
 
     100% {
-        opacity: 0.08;
-        transform: translate(-50%, -50%) scale(1.7);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.35);
+    }
+}
+
+@keyframes sun-flare-burst {
+    0% {
+        opacity: 0.18;
+        transform: translate(-50%, -50%) scale(0.72);
+    }
+
+    30% {
+        opacity: 0.72;
+        transform: translate(-50%, -50%) scale(1.18);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.08);
     }
 }
 

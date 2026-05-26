@@ -114,7 +114,15 @@ if (!prefersReducedMotion) {
 		scannerSun.classList.remove('is-flaring');
 		void scannerSun.offsetWidth;
 		scannerSun.classList.add('is-flaring');
-		window.setTimeout(() => scannerSun.classList.remove('is-flaring'), 1500);
+		window.setTimeout(() => scannerSun.classList.remove('is-flaring'), 1700);
+	};
+
+	let flareTimer = 0;
+	const scheduleSunFlare = () => {
+		flareTimer = window.setTimeout(() => {
+			triggerSunFlare();
+			scheduleSunFlare();
+		}, 7600 + Math.random() * 8200);
 	};
 
 	const triggerCometEvent = () => {
@@ -134,17 +142,19 @@ if (!prefersReducedMotion) {
 	};
 
 	const pulseInterval = window.setInterval(triggerPlanetPulse, 6200);
-	const flareInterval = window.setInterval(triggerSunFlare, 9800);
 	const cometInterval = window.setInterval(triggerCometEvent, 16800);
 	const initialPulse = window.setTimeout(triggerPlanetPulse, 2600);
-	const initialFlare = window.setTimeout(triggerSunFlare, 5200);
+	const initialFlare = window.setTimeout(() => {
+		triggerSunFlare();
+		scheduleSunFlare();
+	}, 5200);
 
 	cleanups.push(() => {
 		window.clearInterval(pulseInterval);
-		window.clearInterval(flareInterval);
 		window.clearInterval(cometInterval);
 		window.clearTimeout(initialPulse);
 		window.clearTimeout(initialFlare);
+		window.clearTimeout(flareTimer);
 		window.clearTimeout(signalLineTimer);
 		window.clearTimeout(scannerNavigationTimer);
 	});
