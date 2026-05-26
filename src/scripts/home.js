@@ -363,7 +363,7 @@ if (backdrop && !prefersReducedMotion) {
 	};
 
 	const starGeometry = new THREE.BufferGeometry();
-	const starCount = 700;
+	const starCount = 950;
 	const starPositions = new Float32Array(starCount * 3);
 
 	for (let i = 0; i < starCount; i += 1) {
@@ -379,9 +379,10 @@ if (backdrop && !prefersReducedMotion) {
 		starGeometry,
 		new THREE.PointsMaterial({
 			color: 0xcfe2ff,
-			size: 0.05,
+			size: 1.15,
+			sizeAttenuation: false,
 			transparent: true,
-			opacity: 0.75,
+			opacity: 0.86,
 			depthWrite: false,
 		}),
 	);
