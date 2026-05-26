@@ -43,6 +43,62 @@
     height: 100%;
 }
 
+.crt-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.24;
+    mix-blend-mode: screen;
+    background:
+        repeating-linear-gradient(
+            180deg,
+            rgba(237, 243, 255, 0.045) 0,
+            rgba(237, 243, 255, 0.045) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    animation: crt-flicker 12s steps(1, end) infinite;
+}
+
+.crt-overlay::before,
+.crt-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.crt-overlay::before {
+    opacity: 0.12;
+    background-image:
+        radial-gradient(circle, rgba(237, 243, 255, 0.48) 0 0.5px, transparent 0.75px),
+        radial-gradient(circle, rgba(246, 212, 143, 0.28) 0 0.5px, transparent 0.75px);
+    background-position:
+        0 0,
+        0.9rem 1.2rem;
+    background-size:
+        1.7rem 1.9rem,
+        2.3rem 2.1rem;
+    animation: terminal-noise 760ms steps(2, end) infinite;
+}
+
+.crt-overlay::after {
+    inset: -35% 0;
+    opacity: 0.18;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 0%,
+            transparent 44%,
+            rgba(246, 212, 143, 0.035) 48%,
+            rgba(237, 243, 255, 0.07) 50%,
+            transparent 56%,
+            transparent 100%
+        );
+    animation: crt-scan-roll 9s linear infinite;
+}
+
 .intro-reveal {
     opacity: 0;
     transform: translateY(18px);
@@ -250,6 +306,7 @@ h3 {
 .contact-meta p {
     font-size: 0.98rem;
     line-height: 1.75;
+    margin: 2rem 0;
     color: rgba(237, 243, 255, 0.86);
 }
 
@@ -619,12 +676,6 @@ h3 {
     --orbit-size: 12rem;
     --orbit-duration: 11s;
     --orbit-angle: 120deg;
-}
-
-.node-3 {
-    --orbit-size: 18rem;
-    --orbit-duration: 23s;
-    --orbit-angle: 240deg;
 }
 
 .node-4 {
@@ -1006,6 +1057,55 @@ h3 {
     }
 }
 
+@keyframes crt-flicker {
+    0%,
+    18%,
+    20%,
+    44%,
+    46%,
+    77%,
+    79%,
+    100% {
+        opacity: 0.24;
+    }
+
+    19% {
+        opacity: 0.31;
+    }
+
+    45% {
+        opacity: 0.18;
+    }
+
+    78% {
+        opacity: 0.28;
+    }
+}
+
+@keyframes terminal-noise {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(-0.25rem, 0.16rem, 0);
+    }
+
+    100% {
+        transform: translate3d(0.18rem, -0.12rem, 0);
+    }
+}
+
+@keyframes crt-scan-roll {
+    from {
+        transform: translateY(-18%);
+    }
+
+    to {
+        transform: translateY(18%);
+    }
+}
+
 @keyframes scanner-boot {
     0% {
         opacity: 0;
@@ -1384,6 +1484,14 @@ h3 {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .crt-overlay,
+    .crt-overlay::before,
+    .crt-overlay::after {
+        animation: none;
+    }
+}
+
 @media (max-width: 720px) {
     .shell {
         width: min(100% - 1rem, 1200px);
@@ -1426,8 +1534,7 @@ h3 {
         height: 4.5rem;
     }
 
-    .node-1,
-    .node-3 {
+    .node-1 {
         --orbit-size: 13rem;
     }
 
