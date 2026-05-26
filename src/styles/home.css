@@ -28,7 +28,7 @@
     z-index: 1;
 }
 
-.three-backdrop {
+.canvas-backdrop {
     position: fixed;
     inset: 0;
     z-index: 0;
@@ -36,7 +36,7 @@
     opacity: 0.9;
 }
 
-.three-backdrop canvas {
+.canvas-backdrop canvas {
     position: relative;
     display: block;
     width: 100%;
@@ -371,14 +371,14 @@ h3 {
     overflow: hidden;
 }
 
-.scanner-three {
+.scanner-canvas {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
 }
 
-.scanner-three canvas {
+.scanner-canvas canvas {
     display: block;
     width: 100%;
     height: 100%;

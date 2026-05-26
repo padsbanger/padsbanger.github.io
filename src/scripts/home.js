@@ -1,6 +1,6 @@
-const backdrop = document.querySelector('#three-backdrop');
+const backdrop = document.querySelector('#canvas-backdrop');
 const scannerGraphic = document.querySelector('#scanner-graphic');
-const scannerThreeHost = document.querySelector('#scanner-three');
+const scannerCanvasHost = document.querySelector('#scanner-canvas');
 const scannerBootOverlay = document.querySelector('#scanner-boot-overlay');
 const scannerBootStatus = document.querySelector('#scanner-boot-status');
 const scannerTargets = Array.from(document.querySelectorAll('.scanner-target'));
@@ -185,28 +185,28 @@ if (scannerGraphic && scannerBootOverlay && scannerBootStatus && !prefersReduced
 	});
 }
 
-const startThreeScenes = async () => {
-	const { startThreeScenes: startVisualScenes } = await import('./three-scenes.js');
+const startCanvasScenes = async () => {
+	const { startCanvasScenes: startVisualScenes } = await import('./canvas-scenes.js');
 	startVisualScenes({
 		backdrop,
 		scannerGraphic,
-		scannerThreeHost,
+		scannerCanvasHost,
 		prefersReducedMotion,
 		cleanups,
 	});
 };
 
-if (scannerThreeHost || (backdrop && !prefersReducedMotion)) {
-	const scheduleThreeScenes = () => {
-		startThreeScenes().catch((error) => {
-			console.error('Unable to start Three.js scenes', error);
+if (scannerCanvasHost || (backdrop && !prefersReducedMotion)) {
+	const scheduleCanvasScenes = () => {
+		startCanvasScenes().catch((error) => {
+			console.error('Unable to start canvas scenes', error);
 		});
 	};
 
 	if ('requestIdleCallback' in window) {
-		window.requestIdleCallback(scheduleThreeScenes, { timeout: 1600 });
+		window.requestIdleCallback(scheduleCanvasScenes, { timeout: 1600 });
 	} else {
-		window.setTimeout(scheduleThreeScenes, 350);
+		window.setTimeout(scheduleCanvasScenes, 350);
 	}
 }
 
