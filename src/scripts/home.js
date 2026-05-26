@@ -166,7 +166,7 @@ if (scannerGraphic && scannerBootOverlay && scannerBootStatus && !prefersReduced
 			scannerBootOverlay.classList.add('is-hidden');
 		}, 1240),
 		window.setTimeout(() => {
-			scannerGraphic.classList.remove('is-booting');
+			scannerGraphic.classList.remove('is-booting', 'scanner-boot');
 		}, 1460),
 	];
 
