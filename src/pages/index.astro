@@ -221,7 +221,7 @@ const structuredData = [
 					<div class="scanner-graphic scanner-boot" id="scanner-graphic">
 						<div class="micro-grid-key" aria-hidden="true">
 							<span>10y+ production</span>
-							<span>React / TS</span>
+							<span>React / TS / NextJS</span>
 							<span>EU / remote</span>
 						</div>
 						<div class="scanner-canvas" id="scanner-canvas" aria-hidden="true"></div>
@@ -230,9 +230,6 @@ const structuredData = [
 						<div class="ring ring-3"></div>
 						<div class="axis axis-h"></div>
 						<div class="axis axis-v"></div>
-						<div class="plot-label plot-label-a">01 Experience</div>
-						<div class="plot-label plot-label-b">02 Side Work</div>
-						<div class="plot-label plot-label-c">03 Contact</div>
 						<div class="scanner-boot-overlay" id="scanner-boot-overlay" aria-live="polite">
 							<p class="scanner-boot-label">Index Boot</p>
 							<p class="scanner-boot-status" id="scanner-boot-status">Initializing project map</p>
@@ -249,9 +246,15 @@ const structuredData = [
 							<div class="scanner-disturbance" id="scanner-disturbance"></div>
 						</div>
 						<button class="sun-core scanner-target" type="button" data-target="sun" data-section="overview" aria-label="Open overview section"></button>
-						<button class="node node-1 scanner-target" type="button" data-target="aurelia" data-section="missions" aria-label="Open experience section"></button>
-						<button class="node node-2 scanner-target" type="button" data-target="vesper" data-section="side-projects" aria-label="Open side projects section"></button>
-						<button class="node node-4 scanner-target" type="button" data-target="io" data-section="contact" aria-label="Open contact section"></button>
+						<button class="node node-1 scanner-target" type="button" data-target="aurelia" data-section="missions" aria-label="Open experience section">
+							<span class="plot-label plot-label-a" aria-hidden="true">01 Experience</span>
+						</button>
+						<button class="node node-2 scanner-target" type="button" data-target="vesper" data-section="side-projects" aria-label="Open side projects section">
+							<span class="plot-label plot-label-b" aria-hidden="true">02 Side Work</span>
+						</button>
+						<button class="node node-4 scanner-target" type="button" data-target="io" data-section="contact" aria-label="Open contact section">
+							<span class="plot-label plot-label-c" aria-hidden="true">03 Contact</span>
+						</button>
 						<div class="scan-line"></div>
 					</div>
 					<div class="scanner-readout intro-reveal">

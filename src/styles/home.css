@@ -655,21 +655,48 @@ h3 {
     font-size: 0.65rem;
     line-height: 1;
     text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
-.plot-label-a {
-    left: 67%;
-    top: 28%;
+.node .plot-label {
+    left: calc(100% + 0.62rem);
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.plot-label-b {
-    left: 20%;
-    top: 60%;
+.node .plot-label::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    width: 0.62rem;
+    height: 1px;
+    background: rgba(43, 42, 34, 0.34);
 }
 
-.plot-label-c {
-    left: 55%;
-    top: 70%;
+.node-2 .plot-label,
+.node-4 .plot-label {
+    left: auto;
+    right: calc(100% + 0.62rem);
+}
+
+.node-2 .plot-label::before,
+.node-4 .plot-label::before {
+    right: auto;
+    left: 100%;
+}
+
+.node-1 .plot-label {
+    border-color: rgba(204, 56, 39, 0.32);
+}
+
+.node-2 .plot-label {
+    border-color: rgba(36, 119, 132, 0.34);
+}
+
+.node-4 .plot-label {
+    border-color: rgba(195, 165, 60, 0.46);
 }
 
 .sun-core {
@@ -769,6 +796,7 @@ h3 {
     transition:
         box-shadow 180ms ease,
         opacity 220ms ease;
+    overflow: visible;
 }
 
 .node.is-activated {
