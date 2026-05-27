@@ -164,13 +164,13 @@ if (scannerGraphic && scannerBootOverlay && scannerBootStatus && !prefersReduced
 	scannerGraphic.classList.add('is-booting');
 	const bootTimers = [
 		window.setTimeout(() => {
-			scannerBootStatus.textContent = 'Calibrating orbital paths';
+			scannerBootStatus.textContent = 'Calibrating grid intervals';
 		}, 340),
 		window.setTimeout(() => {
-			scannerBootStatus.textContent = 'Locking stellar signatures';
+			scannerBootStatus.textContent = 'Indexing role markers';
 		}, 700),
 		window.setTimeout(() => {
-			scannerBootStatus.textContent = 'Navigation map online';
+			scannerBootStatus.textContent = 'Portfolio map online';
 		}, 1020),
 		window.setTimeout(() => {
 			scannerBootOverlay.classList.add('is-hidden');

@@ -57,9 +57,9 @@ const startScannerScene = ({ scannerCanvasHost, cleanups }) => {
 		const { width, height } = layer.size;
 		const radius = Math.min(width, height) * (0.23 + Math.sin(elapsed * 0.34) * 0.004);
 		const gradient = context.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, radius);
-		gradient.addColorStop(0, 'rgba(214, 229, 255, 0.18)');
-		gradient.addColorStop(0.45, 'rgba(168, 196, 242, 0.08)');
-		gradient.addColorStop(1, 'rgba(168, 196, 242, 0)');
+		gradient.addColorStop(0, 'rgba(204, 56, 39, 0.16)');
+		gradient.addColorStop(0.45, 'rgba(36, 119, 132, 0.08)');
+		gradient.addColorStop(1, 'rgba(36, 119, 132, 0)');
 
 		context.globalAlpha = 0.14 + Math.sin(elapsed * 0.55) * 0.03;
 		context.fillStyle = gradient;
@@ -87,14 +87,16 @@ const startScannerScene = ({ scannerCanvasHost, cleanups }) => {
 	});
 };
 
-const createStars = (count) =>
+const createMarks = (count) =>
 	Array.from({ length: count }, () => ({
 		x: Math.random() - 0.5,
 		y: Math.random() - 0.5,
 		depth: 0.35 + Math.random() * 0.95,
 		phase: Math.random() * Math.PI * 2,
-		size: 0.55 + Math.random() * 0.95,
-		alpha: 0.42 + Math.random() * 0.44,
+		size: 0.45 + Math.random() * 1.2,
+		alpha: 0.06 + Math.random() * 0.14,
+		color: Math.random() > 0.76 ? '#cc3827' : Math.random() > 0.58 ? '#247784' : '#2b2a22',
+		line: Math.random() > 0.88,
 	}));
 
 const drawGlow = (context, x, y, radius, innerColor, middleColor, alpha) => {
@@ -112,7 +114,7 @@ const drawGlow = (context, x, y, radius, innerColor, middleColor, alpha) => {
 const startBackdropScene = ({ backdrop, cleanups }) => {
 	const layer = createCanvasLayer(backdrop, { pixelRatioLimit: 1.8, useWindowSize: true });
 	const { context } = layer;
-	const stars = createStars(950);
+	const marks = createMarks(220);
 	const pointer = { x: 0, y: 0 };
 	let rafId = 0;
 
@@ -140,29 +142,45 @@ const startBackdropScene = ({ backdrop, cleanups }) => {
 			centerX - width * 0.16 + pointer.x * 10,
 			centerY + height * 0.08 - pointer.y * 7,
 			Math.min(width, height) * 0.42,
-			'rgba(173, 203, 255, 0.34)',
-			'rgba(180, 208, 255, 0.12)',
-			0.22,
+			'rgba(36, 119, 132, 0.16)',
+			'rgba(36, 119, 132, 0.06)',
+			0.16,
 		);
 		drawGlow(
 			context,
 			centerX + width * 0.24 - pointer.x * 8,
 			centerY - height * 0.18 + pointer.y * 6,
 			Math.min(width, height) * 0.32,
-			'rgba(255, 220, 170, 0.22)',
-			'rgba(180, 208, 255, 0.08)',
-			0.16,
+			'rgba(204, 56, 39, 0.13)',
+			'rgba(195, 165, 60, 0.06)',
+			0.13,
 		);
 
-		stars.forEach((star) => {
-			const worldX = star.x * width * 1.12;
-			const worldY = star.y * height * 1.12;
+		marks.forEach((mark) => {
+			const worldX = mark.x * width * 1.12;
+			const worldY = mark.y * height * 1.12;
 			const rotatedX = worldX * cos - worldY * sin;
 			const rotatedY = worldX * sin + worldY * cos;
-			const x = centerX + rotatedX + pointer.x * star.depth * 12;
-			const y = centerY + rotatedY - pointer.y * star.depth * 8;
-			const alpha = star.alpha + Math.sin(elapsed * 0.9 + star.phase) * 0.08;
-			drawCircle(context, x, y, star.size, '#cfe2ff', Math.max(0.12, alpha));
+			const x = centerX + rotatedX + pointer.x * mark.depth * 12;
+			const y = centerY + rotatedY - pointer.y * mark.depth * 8;
+			const alpha = mark.alpha + Math.sin(elapsed * 0.9 + mark.phase) * 0.05;
+
+			if (mark.line) {
+				context.globalAlpha = Math.max(0.035, alpha);
+				context.strokeStyle = mark.color;
+				context.lineWidth = 1;
+				context.beginPath();
+				context.moveTo(x - mark.size * 5, y);
+				context.lineTo(x + mark.size * 5, y);
+				context.stroke();
+				context.beginPath();
+				context.moveTo(x, y - mark.size * 5);
+				context.lineTo(x, y + mark.size * 5);
+				context.stroke();
+				return;
+			}
+
+			drawCircle(context, x, y, mark.size, mark.color, Math.max(0.035, alpha));
 		});
 
 		context.globalAlpha = 1;
