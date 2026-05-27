@@ -99,6 +99,18 @@ const createMarks = (count) =>
 		line: Math.random() > 0.88,
 	}));
 
+const createRoutes = (count) =>
+	Array.from({ length: count }, (_, index) => ({
+		y: 0.16 + index * (0.7 / Math.max(1, count - 1)) + (Math.random() - 0.5) * 0.04,
+		amplitude: 18 + Math.random() * 46,
+		frequency: 1.15 + Math.random() * 1.1,
+		phase: Math.random() * Math.PI * 2,
+		speed: 0.05 + Math.random() * 0.08,
+		alpha: 0.055 + Math.random() * 0.055,
+		color: index % 3 === 0 ? '#cc3827' : index % 3 === 1 ? '#247784' : '#2b2a22',
+		dash: 10 + Math.random() * 18,
+	}));
+
 const drawGlow = (context, x, y, radius, innerColor, middleColor, alpha) => {
 	const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
 	gradient.addColorStop(0, innerColor);
@@ -111,10 +123,58 @@ const drawGlow = (context, x, y, radius, innerColor, middleColor, alpha) => {
 	context.fill();
 };
 
+const drawRouteLines = (context, routes, { width, height }, elapsed, pointer) => {
+	routes.forEach((route, routeIndex) => {
+		const baseY = height * route.y + pointer.y * routeIndex * 2.5;
+		const step = Math.max(36, width / 18);
+		context.globalAlpha = route.alpha;
+		context.strokeStyle = route.color;
+		context.lineWidth = routeIndex % 2 === 0 ? 1 : 0.75;
+		context.setLineDash([route.dash, route.dash * 0.72]);
+		context.lineDashOffset = -elapsed * 8 * route.speed * 10;
+		context.beginPath();
+
+		for (let x = -step; x <= width + step; x += step) {
+			const progress = x / width;
+			const drift = Math.sin(progress * Math.PI * 2 * route.frequency + route.phase + elapsed * route.speed);
+			const y = baseY + drift * route.amplitude + pointer.x * route.amplitude * 0.12;
+
+			if (x === -step) {
+				context.moveTo(x, y);
+			} else {
+				context.lineTo(x, y);
+			}
+		}
+
+		context.stroke();
+		context.setLineDash([]);
+	});
+};
+
+const drawRegistrationTicks = (context, { width, height }, elapsed) => {
+	const margin = Math.min(width, 1180) * 0.04 + 16;
+	const tickCount = 7;
+	context.globalAlpha = 0.09;
+	context.strokeStyle = '#2b2a22';
+	context.lineWidth = 1;
+
+	for (let index = 0; index < tickCount; index++) {
+		const y = height * (0.1 + index * 0.13);
+		const offset = Math.sin(elapsed * 0.12 + index) * 3;
+		context.beginPath();
+		context.moveTo(margin + offset, y);
+		context.lineTo(margin + 18 + offset, y);
+		context.moveTo(width - margin - 18 - offset, y);
+		context.lineTo(width - margin - offset, y);
+		context.stroke();
+	}
+};
+
 const startBackdropScene = ({ backdrop, cleanups }) => {
 	const layer = createCanvasLayer(backdrop, { pixelRatioLimit: 1.8, useWindowSize: true });
 	const { context } = layer;
 	const marks = createMarks(220);
+	const routes = createRoutes(8);
 	const pointer = { x: 0, y: 0 };
 	let rafId = 0;
 
@@ -155,6 +215,8 @@ const startBackdropScene = ({ backdrop, cleanups }) => {
 			'rgba(195, 165, 60, 0.06)',
 			0.13,
 		);
+		drawRouteLines(context, routes, { width, height }, elapsed, pointer);
+		drawRegistrationTicks(context, { width, height }, elapsed);
 
 		marks.forEach((mark) => {
 			const worldX = mark.x * width * 1.12;
