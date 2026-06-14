@@ -336,7 +336,7 @@ em {
   color: var(--graphite);
   padding: 0.8rem 0;
   --marquee-gap: 1.7rem;
-  --marquee-duration: 28s;
+  --marquee-duration: 100s;
 }
 
 .marquee-track {
