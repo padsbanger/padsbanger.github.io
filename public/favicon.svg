@@ -1,28 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
 	<title id="title">Michał Lach portfolio favicon</title>
-	<desc id="desc">A compact orbital scanner mark in the same visual style as the portfolio UI.</desc>
-	<defs>
-		<linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
-			<stop offset="0" stop-color="#04070d" />
-			<stop offset="0.5" stop-color="#08101b" />
-			<stop offset="1" stop-color="#0a1422" />
-		</linearGradient>
-		<radialGradient id="glow" cx="50%" cy="50%" r="55%">
-			<stop offset="0" stop-color="#8ab5ff" stop-opacity="0.14" />
-			<stop offset="1" stop-color="#8ab5ff" stop-opacity="0" />
-		</radialGradient>
-	</defs>
-
-	<rect width="64" height="64" rx="14" fill="url(#bg)" />
-	<rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#bfd2f5" stroke-opacity="0.18" />
-	<rect x="6" y="6" width="52" height="52" rx="10" fill="url(#glow)" />
-
-	<circle cx="32" cy="32" r="18" fill="none" stroke="#bfd2f5" stroke-opacity="0.46" stroke-width="1.5" />
-	<circle cx="32" cy="32" r="11" fill="none" stroke="#bfd2f5" stroke-opacity="0.34" stroke-width="1.5" />
-	<path d="M14 32h36M32 14v36" stroke="#bfd2f5" stroke-opacity="0.24" stroke-width="1.5" />
-
-	<circle cx="32" cy="32" r="4.2" fill="#f6d48f" />
-	<circle cx="32" cy="32" r="7" fill="none" stroke="#f6d48f" stroke-opacity="0.32" stroke-width="1.2" />
-	<circle cx="50" cy="32" r="2.3" fill="#dce7fa" />
-	<circle cx="24" cy="21" r="1.8" fill="#dce7fa" fill-opacity="0.82" />
+	<desc id="desc">A compact ML brand mark with an acid green face, pale border, and orange offset shadow.</desc>
+	<rect x="15" y="15" width="43" height="43" rx="4" fill="#ff6a2f" />
+	<rect x="7" y="5" width="48" height="48" rx="4" fill="#d9ff3f" stroke="#f0eee1" stroke-width="4" />
+	<path fill="#080908" d="M14 42V18h6l5 12 5-12h6v24h-6V29l-4 9h-2l-4-9v13h-6Z" />
+	<path fill="#080908" d="M40 18h6v18h10v6H40V18Z" />
 </svg>

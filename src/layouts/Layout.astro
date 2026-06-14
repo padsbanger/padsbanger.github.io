@@ -36,11 +36,17 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 		<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
 		<link rel="icon" href="/favicon.ico" />
 		<link rel="canonical" href={canonicalUrl} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="author" content="Michał Lach" />
 		<meta name="robots" content="index, follow, max-image-preview:large" />
-		<meta name="theme-color" content="#f6f2e8" />
+		<meta name="theme-color" content="#0d0f0d" />
 		{keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Michał Lach" />
@@ -73,19 +79,9 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 
 <style>
 	:root {
-		color-scheme: light;
-		font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-		background:
-			radial-gradient(ellipse at 14% 10%, rgba(36, 119, 132, 0.13), transparent 24rem),
-			radial-gradient(ellipse at 86% 18%, rgba(204, 56, 39, 0.1), transparent 22rem),
-			radial-gradient(ellipse at 48% 92%, rgba(195, 165, 60, 0.12), transparent 32rem),
-			linear-gradient(180deg, #fcf8ec 0%, #f3eddf 54%, #e8deca 100%);
-		background-size:
-			auto,
-			auto,
-			auto,
-			auto;
-		background-color: #f6f2e8;
+		color-scheme: dark;
+		font-family: 'Geist', system-ui, sans-serif;
+		background-color: #0d0f0d;
 	}
 
 	html {
@@ -100,7 +96,7 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 	}
 
 	body {
-		color: #2b2a22;
+		color: #f0eee1;
 	}
 
 	* {
