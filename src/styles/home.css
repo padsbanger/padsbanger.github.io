@@ -108,6 +108,12 @@ em {
   backdrop-filter: blur(12px);
 }
 
+main,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
 .site-header::after {
   content: "";
   position: absolute;
@@ -876,15 +882,15 @@ a.case-year:hover {
 .spotlight {
   position: fixed;
   inset: 0;
-  z-index: 40;
+  z-index: 1;
   pointer-events: none;
   opacity: 0;
   mix-blend-mode: screen;
   background: radial-gradient(
     40px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(217, 255, 63, 0.1),
-    rgba(131, 174, 184, 0.05) 42%,
-    transparent 9Cursor spotlight2%
+    rgba(217, 255, 63, 0.12),
+    rgba(131, 174, 184, 0.07) 42%,
+    transparent 80%
   );
   transition: opacity 0.4s ease;
 }
