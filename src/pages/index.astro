@@ -167,6 +167,23 @@ const structuredData = [
 	structuredData={structuredData}
 >
 	<div class="top-anchor" id="top" aria-hidden="true"></div>
+
+	<div class="boot" id="boot" aria-hidden="true">
+		<div class="boot-shell">
+			<div class="boot-head">
+				<span>Bootloader sequence</span>
+				<strong>ML://portfolio</strong>
+			</div>
+			<pre class="boot-log" id="boot-log"></pre>
+			<div class="boot-progress" aria-hidden="true">
+				<span></span>
+			</div>
+			<span class="boot-skip">[ press any key to skip ]</span>
+		</div>
+	</div>
+
+	<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
 	<header class="site-header">
 		<a href="#top" class="brand">
 			<span class="brand-mark">ML</span>
@@ -190,7 +207,7 @@ const structuredData = [
 				<span class="reveal accent" style="--d:1">systems for complex products.</span>
 			</h1>
 			<p class="hero-sub reveal" style="--d:2">
-				I'm a Frontend Engineer focused performance optimization,
+				I'm a Frontend Engineer focused on performance optimization,
 				component design systems, state management, and developer experience across
 				fintech, AI, enterprise, healthcare, and media products.
 			</p>
@@ -248,6 +265,7 @@ const structuredData = [
 						</div>
 						<h3 class="case-title">{item.title}</h3>
 						<p class="case-role">{item.role}</p>
+							<span class={`case-status${item.year.includes('Present') ? ' is-active' : ''}`} aria-hidden="true">{item.year.includes('Present') ? 'ACTIVE' : 'ARCHIVED'}</span>
 						<p class="case-text">{item.text}</p>
 						<div class="case-stack">
 							{item.stack.map((stackItem) => <span>{stackItem}</span>)}
@@ -342,7 +360,7 @@ const structuredData = [
 
 	<footer class="site-footer">
 		<span>© 2026 Michał Lach</span>
-		<span>Senior Frontend Engineer · Gdynia, Poland</span>
+		<span class="sys-status" id="sys-status" aria-hidden="true">UPTIME 10Y · GDYNIA <span class="sys-clock" id="sys-clock">··:··:··</span> CET</span>
 		<a href="#top">Back to top ↑</a>
 	</footer>
 </Layout>
