@@ -115,7 +115,7 @@ const seoKeywords = [
 	'frontend architecture',
 	'design systems',
 	'web performance',
-	'Gdansk frontend engineer',
+	'Gdynia frontend engineer',
 ];
 
 const structuredData = [
@@ -125,10 +125,15 @@ const structuredData = [
 		name: 'Michał Lach',
 		url: 'https://michal-lach.pl',
 		jobTitle: 'Senior Frontend Engineer',
+		image: 'https://michal-lach.pl/og-image.png',
 		address: {
 			'@type': 'PostalAddress',
 			addressLocality: 'Gdynia',
 			addressCountry: 'PL',
+		},
+		worksFor: {
+			'@type': 'Organization',
+			name: 'Nordea',
 		},
 		email: 'mailto:kontakt@michal-lach.pl',
 		sameAs: [
@@ -203,6 +208,7 @@ const structuredData = [
 		<section class="hero">
 			<p class="eyebrow reveal">Senior Frontend Engineer · Gdynia, PL / Remote</p>
 			<h1 class="hero-title">
+				<span class="sr-only">Michał Lach — Senior Frontend Engineer.</span>
 				<span class="reveal" style="--d:0">Building scalable frontend</span>
 				<span class="reveal accent" style="--d:1">systems for complex products.</span>
 			</h1>
@@ -354,6 +360,7 @@ const structuredData = [
 				<a href="https://github.com/padsbanger" target="_blank" rel="noopener">GitHub ↗</a>
 				<a href="https://www.linkedin.com/in/micha%C5%82-lach-98854a6b/" target="_blank" rel="noopener">LinkedIn ↗</a>
 				<a href="mailto:kontakt@michal-lach.pl">Email ↗</a>
+				<a href="/cv.pdf" target="_blank" rel="noopener">Download CV ↗</a>
 			</div>
 		</section>
 	</main>
