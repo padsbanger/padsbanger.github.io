@@ -46,7 +46,7 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 		<meta name="description" content={description} />
 		<meta name="author" content="Michał Lach" />
 		<meta name="robots" content="index, follow, max-image-preview:large" />
-		<meta name="theme-color" content="#0d0f0d" />
+		<meta name="theme-color" content="#e7e3d6" />
 		{keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
 		<meta property="og:type" content="website" />
 			<meta property="og:locale" content="en_US" />
@@ -64,7 +64,19 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageUrl} />
 		<title>{title}</title>
-		{jsonLd && <script type="application/ld+json" set:html={jsonLd}></script>}
+		<script is:inline>
+				/* Resolve the theme before first paint to avoid a flash of the wrong palette. */
+				(function () {
+					try {
+						var stored = localStorage.getItem('theme');
+						var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+						document.documentElement.dataset.theme = theme;
+						var meta = document.querySelector('meta[name="theme-color"]');
+						if (meta) meta.setAttribute('content', theme === 'dark' ? '#14150f' : '#e7e3d6');
+					} catch (e) {}
+				})();
+			</script>
+			{jsonLd && <script type="application/ld+json" set:html={jsonLd}></script>}
 		{
 			googleAnalyticsSnippet && (
 				<>
@@ -81,9 +93,9 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 
 <style>
 	:root {
-		color-scheme: dark;
-		font-family: 'Geist', system-ui, sans-serif;
-		background-color: #0d0f0d;
+		color-scheme: light;
+		font-family: 'Geist Mono', ui-monospace, monospace;
+		background-color: #e7e3d6;
 	}
 
 	html {
@@ -98,7 +110,7 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 	}
 
 	body {
-		color: #f0eee1;
+		color: #16150f;
 	}
 
 	* {

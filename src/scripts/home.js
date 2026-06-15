@@ -1,5 +1,27 @@
 document.documentElement.classList.add("js");
 
+// ===== Theme toggle: switch + persist light/dark, sync the address-bar color. =====
+const themeToggle = document.getElementById("theme-toggle");
+if (themeToggle) {
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    if (themeMeta) themeMeta.setAttribute("content", theme === "dark" ? "#14150f" : "#e7e3d6");
+    themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+  };
+  // The inline head script already set the initial theme; just sync the button state.
+  applyTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+  themeToggle.addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {
+      /* storage may be unavailable (private mode); toggle still works for the session. */
+    }
+    applyTheme(next);
+  });
+}
+
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Scroll-reveal: fade & lift elements into view as they enter the viewport.
@@ -60,6 +82,7 @@ if (boot && bootLog) {
     `${stamp(0)} loading experience.modules ........ <i>06 ok</i>`,
     `${stamp(1)} mounting frontend/runtime ......... <i>ready</i>`,
     `${stamp(1)} resolving stack [react · typescript · next] <i>ok</i>`,
+    `${stamp(2)} field operation ................... <i>active</i>`,
     `${stamp(2)} sys.online — <i>welcome</i>`,
   ];
 
@@ -196,7 +219,7 @@ if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
   });
 }
 
-// ===== Live "system clock" in the footer. =====
+// ===== Live "system clock" in the footer (local CET). =====
 const clock = document.getElementById("sys-clock");
 if (clock) {
   const fmt = new Intl.DateTimeFormat("en-GB", {
@@ -211,4 +234,31 @@ if (clock) {
   };
   tickClock();
   window.setInterval(tickClock, 1000);
+}
+
+// ===== Hero HUD readout: live UTC clock + date, brasshands-style. =====
+const hudClock = document.getElementById("hud-clock");
+const hudDate = document.getElementById("hud-date");
+if (hudClock || hudDate) {
+  const timeFmt = new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+    timeZone: "UTC",
+  });
+  const dateFmt = new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  const tickHud = () => {
+    const now = new Date();
+    if (hudClock) hudClock.textContent = timeFmt.format(now);
+    if (hudDate) hudDate.textContent = dateFmt.format(now).toUpperCase();
+  };
+  tickHud();
+  window.setInterval(tickHud, 1000);
 }
