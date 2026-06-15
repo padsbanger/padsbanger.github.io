@@ -23,6 +23,9 @@
   --glow-bottom: rgba(22, 21, 15, 0.05);
   --spotlight: rgba(22, 21, 15, 0.06);
   --spotlight-blend: multiply;
+  --scrollbar-track: var(--paper-2);
+  --scrollbar-thumb: rgba(22, 21, 15, 0.34);
+  --scrollbar-thumb-hover: var(--accent);
 
   --max: 1180px;
   --pad: clamp(1.25rem, 4vw, 3rem);
@@ -54,6 +57,9 @@
   --glow-bottom: rgba(0, 0, 0, 0.45);
   --spotlight: rgba(236, 232, 218, 0.08);
   --spotlight-blend: screen;
+  --scrollbar-track: var(--panel);
+  --scrollbar-thumb: rgba(236, 232, 218, 0.28);
+  --scrollbar-thumb-hover: var(--accent);
 }
 
 * {
@@ -64,6 +70,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--ink) var(--paper-2);
+  scrollbar-width: thin;
 }
 
 body {
@@ -81,6 +89,32 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    var(--paper-2);
+  background-size: 12px 12px, auto;
+  border-left: 1px solid var(--line-strong);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border: 3px solid var(--paper-2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--paper-2);
 }
 
 /* Faint paper vignette + grain so the bone tone reads as a physical surface. */
@@ -102,6 +136,36 @@ a {
 
 em {
   font-style: italic;
+}
+
+/* ===== Scrollbar — squared, hairline, theme-aware to match the HUD frame. ===== */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-left: 1px solid var(--line);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  /* Track-colored border insets the thumb into a thin bar. */
+  border: 3px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
 }
 
 .top-anchor {

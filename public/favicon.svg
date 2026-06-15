@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-	<title id="title">Michał Lach portfolio favicon</title>
-	<desc id="desc">A compact ML brand mark with an acid green face, pale border, and orange offset shadow.</desc>
-	<rect x="15" y="15" width="43" height="43" rx="4" fill="#ff6a2f" />
-	<rect x="7" y="5" width="48" height="48" rx="4" fill="#d9ff3f" stroke="#f0eee1" stroke-width="4" />
-	<path fill="#080908" d="M14 42V18h6l5 12 5-12h6v24h-6V29l-4 9h-2l-4-9v13h-6Z" />
-	<path fill="#080908" d="M40 18h6v18h10v6H40V18Z" />
+	<title id="title">Michal Lach portfolio favicon</title>
+	<desc id="desc">An ML brand mark: a near-black ink square with an oxide-red registration offset and a bone monogram.</desc>
+	<rect x="14" y="16" width="42" height="42" fill="#b4441c" />
+	<rect x="8" y="10" width="42" height="42" fill="#16150f" />
+	<g fill="#e7e3d6" transform="translate(-4 3)">
+		<path d="M16 38V18H21L25 28L29 18H34V38H29V28L26 35H24L21 28V38H16Z" />
+		<path d="M38 18H43V34H50V38H38V18Z" />
+	</g>
 </svg>
