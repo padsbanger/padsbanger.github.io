@@ -46,11 +46,66 @@ if ("IntersectionObserver" in window) {
 
 // Subtle header shadow once the page is scrolled.
 const header = document.querySelector(".site-header");
-const onScroll = () => {
-  header.style.boxShadow = window.scrollY > 8 ? "0 10px 0 rgba(0, 0, 0, 0.36)" : "none";
-};
-window.addEventListener("scroll", onScroll, { passive: true });
-onScroll();
+if (header) {
+  let headerScrollRaf = 0;
+  const updateHeaderShadow = () => {
+    header.style.boxShadow = window.scrollY > 8 ? "0 10px 0 rgba(0, 0, 0, 0.36)" : "none";
+    headerScrollRaf = 0;
+  };
+  const onScroll = () => {
+    if (headerScrollRaf) return;
+    headerScrollRaf = window.requestAnimationFrame(updateHeaderShadow);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  updateHeaderShadow();
+}
+
+// Highlight the primary nav item for the section currently in view.
+const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
+const navTargets = navLinks
+  .map((link) => {
+    const target = document.querySelector(link.getAttribute("href"));
+    return target ? { link, target } : null;
+  })
+  .filter(Boolean);
+
+if (navTargets.length) {
+  const setActiveNav = (id) => {
+    navTargets.forEach(({ link }) => {
+      const active = link.hash === `#${id}`;
+      link.classList.toggle("is-active", active);
+      if (active) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  if ("IntersectionObserver" in window) {
+    const visibleSections = new Map();
+    const navIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleSections.set(entry.target.id, entry.intersectionRatio);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        });
+
+        const activeId = Array.from(visibleSections.entries()).sort((a, b) => b[1] - a[1])[0]?.[0];
+        if (activeId) setActiveNav(activeId);
+      },
+      {
+        rootMargin: "-28% 0px -55% 0px",
+        threshold: [0.1, 0.25, 0.5, 0.75],
+      }
+    );
+
+    navTargets.forEach(({ target }) => navIo.observe(target));
+  }
+}
 
 // ===== Boot sequence: type a fake system log, then reveal the page. =====
 const boot = document.getElementById("boot");

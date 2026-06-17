@@ -253,7 +253,9 @@ main,
   transition: color 0.18s ease, background 0.18s ease;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.is-active,
+.nav a[aria-current="true"] {
   color: var(--paper);
   background: var(--ink);
 }
@@ -263,7 +265,9 @@ main,
   color: var(--faint);
 }
 
-.nav a:hover .num {
+.nav a:hover .num,
+.nav a.is-active .num,
+.nav a[aria-current="true"] .num {
   color: var(--accent-soft);
 }
 
@@ -945,6 +949,12 @@ a.case-year:hover {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .marquee-track {
+    animation: none;
+    transform: none;
+    will-change: auto;
   }
 }
 
