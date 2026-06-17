@@ -550,6 +550,11 @@ main,
   --marquee-duration: 110s;
 }
 
+.marquee:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .marquee-track {
   display: flex;
   width: max-content;
@@ -561,6 +566,12 @@ main,
   text-transform: uppercase;
   animation: marquee-scroll var(--marquee-duration) linear infinite;
   will-change: transform;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
 }
 
 .marquee-group {
@@ -849,6 +860,11 @@ a.case-year:hover {
 }
 
 .contact-mail:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.contact-mail.is-copied {
   border-color: var(--accent);
   color: var(--accent);
 }

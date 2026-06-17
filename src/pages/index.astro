@@ -297,9 +297,9 @@ const structuredData = [
 			</div>
 		</section>
 
-		<div class="marquee" aria-hidden="true">
+		<div class="marquee" tabindex="0" aria-label={`Frontend stack: ${marqueeItems.join(' ')}`}>
 			<div class="marquee-track">
-				<div class="marquee-group">
+				<div class="marquee-group" aria-hidden="true">
 					{marqueeItems.map((item) => <span>{item}</span>)}
 				</div>
 				<div class="marquee-group" aria-hidden="true">
@@ -410,7 +410,15 @@ const structuredData = [
 				Open to frontend roles, architecture-heavy product work, and teams that care
 				about building maintainable and usable systems.
 			</p>
-			<a href="mailto:kontakt@michal-lach.pl" class="contact-mail reveal">kontakt@michal-lach.pl</a>
+			<a
+				href="mailto:kontakt@michal-lach.pl"
+				class="contact-mail reveal"
+				data-copy-email="kontakt@michal-lach.pl"
+				aria-label="Copy email address kontakt@michal-lach.pl"
+				aria-live="polite"
+			>
+				kontakt@michal-lach.pl
+			</a>
 			<div class="contact-links reveal">
 				<a href="https://github.com/padsbanger" target="_blank" rel="noopener">GitHub ↗</a>
 				<a href="https://www.linkedin.com/in/micha%C5%82-lach-98854a6b/" target="_blank" rel="noopener">LinkedIn ↗</a>
