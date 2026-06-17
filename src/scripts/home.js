@@ -44,20 +44,32 @@ if ("IntersectionObserver" in window) {
   els.forEach((el) => el.classList.add("in"));
 }
 
-// Subtle header shadow once the page is scrolled.
+// Subtle header shadow and scroll progress once the page is scrolled.
 const header = document.querySelector(".site-header");
-if (header) {
-  let headerScrollRaf = 0;
-  const updateHeaderShadow = () => {
-    header.style.boxShadow = window.scrollY > 8 ? "0 10px 0 rgba(0, 0, 0, 0.36)" : "none";
-    headerScrollRaf = 0;
+const scrollProgressBar = document.getElementById("scroll-progress-bar");
+if (header || scrollProgressBar) {
+  let scrollRaf = 0;
+  const updateScrollHud = () => {
+    if (header) {
+      header.style.boxShadow = window.scrollY > 8 ? "0 10px 0 rgba(0, 0, 0, 0.36)" : "none";
+    }
+
+    if (scrollProgressBar) {
+      const doc = document.documentElement;
+      const maxScroll = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+      scrollProgressBar.style.setProperty("--scroll-progress", progress.toFixed(4));
+    }
+
+    scrollRaf = 0;
   };
   const onScroll = () => {
-    if (headerScrollRaf) return;
-    headerScrollRaf = window.requestAnimationFrame(updateHeaderShadow);
+    if (scrollRaf) return;
+    scrollRaf = window.requestAnimationFrame(updateScrollHud);
   };
   window.addEventListener("scroll", onScroll, { passive: true });
-  updateHeaderShadow();
+  window.addEventListener("resize", onScroll, { passive: true });
+  updateScrollHud();
 }
 
 // Highlight the primary nav item for the section currently in view.
@@ -289,6 +301,29 @@ if (clock) {
   };
   tickClock();
   window.setInterval(tickClock, 1000);
+}
+
+// ===== Footer Easter egg: source link + session uptime. =====
+const viewSourceLink = document.querySelector("[data-view-source]");
+if (viewSourceLink) {
+  const sourceUrl = new URL(window.location.href);
+  sourceUrl.hash = "";
+  viewSourceLink.setAttribute("href", `view-source:${sourceUrl.href}`);
+}
+
+const uptime = document.getElementById("sys-uptime");
+if (uptime) {
+  const startedAt = Date.now();
+  const pad = (value) => String(value).padStart(2, "0");
+  const tickUptime = () => {
+    const elapsed = Math.floor((Date.now() - startedAt) / 1000);
+    const hours = Math.floor(elapsed / 3600);
+    const minutes = Math.floor((elapsed % 3600) / 60);
+    const seconds = elapsed % 60;
+    uptime.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  };
+  tickUptime();
+  window.setInterval(tickUptime, 1000);
 }
 
 // ===== Hero HUD readout: live UTC clock + date, brasshands-style. =====

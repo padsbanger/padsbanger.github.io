@@ -195,6 +195,9 @@ const structuredData = [
 	</div>
 
 	<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+	<div class="scroll-progress" aria-hidden="true">
+		<span id="scroll-progress-bar"></span>
+	</div>
 
 	<header class="site-header">
 		<a href="#top" class="brand">
@@ -429,6 +432,11 @@ const structuredData = [
 	</main>
 
 	<footer class="site-footer">
+		<span class="sys-meta">
+			<a href="view-source:https://michal-lach.pl/" data-view-source>view-source</a>
+			<span>ml.system --version 1.0.0</span>
+			<span>uptime <span id="sys-uptime">00:00:00</span></span>
+		</span>
 		<span>Michał Lach, frontend engineering · all work is my own</span>
 		<span class="sys-status" id="sys-status" aria-hidden="true">GDYNIA <span class="sys-clock" id="sys-clock">··:··:··</span> CET</span>
 		<a href="#top">Back to top ↑</a>
