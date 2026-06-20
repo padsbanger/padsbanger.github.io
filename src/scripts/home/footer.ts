@@ -31,14 +31,16 @@ export const initFooterEasterEgg = () => {
   const uptime = document.getElementById("sys-uptime");
   if (!uptime) return;
 
-  const startedAt = Date.now();
+  const launchedAt = Date.parse("2024-11-01T00:00:00Z");
   const tickUptime = () => {
-    const elapsed = Math.floor((Date.now() - startedAt) / 1000);
-    const hours = Math.floor(elapsed / 3600);
+    const elapsed = Math.max(0, Math.floor((Date.now() - launchedAt) / 1000));
+    const days = Math.floor(elapsed / 86400);
+    const hours = Math.floor((elapsed % 86400) / 3600);
     const minutes = Math.floor((elapsed % 3600) / 60);
     const seconds = elapsed % 60;
 
-    uptime.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    const clock = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    uptime.textContent = days > 0 ? `${days}d ${clock}` : clock;
   };
 
   tickUptime();

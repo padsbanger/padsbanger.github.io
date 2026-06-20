@@ -29,6 +29,7 @@
 
   --max: 1180px;
   --pad: clamp(1.25rem, 4vw, 3rem);
+  --content-max: calc(var(--max) - (2 * var(--pad)));
 
   --sans: "Geist", system-ui, sans-serif;
   --mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
@@ -673,7 +674,8 @@ main,
 }
 
 .section--alt > * {
-  max-width: var(--max);
+  width: 100%;
+  max-width: var(--content-max);
   margin-inline: auto;
 }
 
