@@ -107,6 +107,10 @@
 	transition: background 0.2s ease, color 0.2s ease;
 }
 
+.proof-card + .proof-card {
+	border-top: 0;
+}
+
 .proof-card:hover {
 	background: var(--ink);
 	color: var(--paper);
