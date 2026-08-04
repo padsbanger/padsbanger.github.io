@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import '../../styles/home.css';
+
+const repositoryUrl = 'https://github.com/padsbanger/hyperliquid-bot';
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'SoftwareSourceCode',
+	name: 'Hyperliquid spot and HIP-3 TradFi paper bot',
+	description:
+		'A read-only, restart-safe paper-trading research tool that models a rules-based strategy from public Hyperliquid market data without placing exchange orders.',
+	codeRepository: repositoryUrl,
+	programmingLanguage: 'Python',
+	runtimePlatform: 'Docker',
+	url: 'https://michal-lach.pl/projects/hyperliquid-paper-bot/',
+	author: {
+		'@type': 'Person',
+		name: 'Michał Lach',
+		url: 'https://michal-lach.pl',
+	},
+};
+---
+
+<Layout
+	title="Hyperliquid paper-trading research bot — Michał Lach"
+	description="Official project page for a read-only Hyperliquid market simulator. Paper trading only: no wallet, signing code, leverage, or live exchange orders."
+	keywords={[
+		'Hyperliquid paper trading',
+		'crypto market simulator',
+		'Python trading research',
+		'HIP-3 market data',
+		'read-only trading bot',
+	]}
+	structuredData={structuredData}
+>
+	<header class="site-header project-header">
+		<a href="/" class="brand" aria-label="Back to Michał Lach portfolio">
+			<span class="brand-mark">ML</span>
+			<span class="brand-name">Open-source research</span>
+		</a>
+		<div class="header-actions">
+			<a href={repositoryUrl} class="btn btn--solid" target="_blank" rel="noopener">View source ↗</a>
+		</div>
+	</header>
+
+	<main>
+		<section class="hero project-hero">
+			<div class="hero-frame">
+				<span class="tick tick--tl" aria-hidden="true"></span>
+				<span class="tick tick--tr" aria-hidden="true"></span>
+				<span class="tick tick--bl" aria-hidden="true"></span>
+				<span class="tick tick--br" aria-hidden="true"></span>
+
+				<p class="eyebrow">Hyperliquid · public data · simulation only</p>
+				<h1 class="hero-title project-title">
+					<span>Market research</span>
+					<span>without <span class="accent">live orders.</span></span>
+				</h1>
+				<p class="hero-sub">
+					A restart-safe Python service that reads public Hyperliquid spot and HIP-3
+					TradFi data, models a four-hour strategy, and records every paper fill in a
+					reviewable ledger.
+				</p>
+
+				<div class="safety-callout">
+					<strong>Hard safety boundary</strong>
+					<p>
+						The project contains no wallet, private key, signing code, or call to
+						Hyperliquid's exchange endpoint. It cannot place a real order and makes no
+						profit claim.
+					</p>
+				</div>
+
+				<div class="hero-actions">
+					<a href={repositoryUrl} class="btn btn--solid" target="_blank" rel="noopener">Inspect the repository ↗</a>
+					<a href="#method" class="btn btn--ghost">Read the method</a>
+				</div>
+			</div>
+
+			<div class="metrics">
+				<div class="metric"><span class="metric-num">0</span><span class="metric-label">Live orders<br />possible</span></div>
+				<div class="metric"><span class="metric-num">1×</span><span class="metric-label">Modeled<br />maximum exposure</span></div>
+				<div class="metric"><span class="metric-num">4h</span><span class="metric-label">Completed-bar<br />signal interval</span></div>
+				<div class="metric"><span class="metric-num">100%</span><span class="metric-label">Public market<br />data inputs</span></div>
+			</div>
+		</section>
+
+		<section class="section section--alt" id="method">
+			<div class="section-head">
+				<span class="section-num">01</span>
+				<h2 class="section-title">What the simulator actually tests</h2>
+				<p class="section-desc">
+					The useful output is a falsifiable execution record—not a forecast or an
+					invitation to trade.
+				</p>
+			</div>
+			<div class="cases project-grid">
+				<article class="case">
+					<div class="case-meta"><span class="case-tag">Filter</span><span>Liquidity</span></div>
+					<h3 class="case-title">Reject weak markets</h3>
+					<p class="case-text">Excludes bookless or delisted markets, thin rolling volume, and spreads above the configured ceiling.</p>
+				</article>
+				<article class="case">
+					<div class="case-meta"><span class="case-tag">Model</span><span>Execution</span></div>
+					<h3 class="case-title">Use visible depth</h3>
+					<p class="case-text">Paper entries and exits are modeled against current L2 depth with explicit fee and residual-slippage assumptions.</p>
+				</article>
+				<article class="case">
+					<div class="case-meta"><span class="case-tag">Audit</span><span>SQLite</span></div>
+					<h3 class="case-title">Keep a durable ledger</h3>
+					<p class="case-text">Cash, positions, stops, signals, and simulated fills survive restarts and remain inspectable after a run.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="section project-proof">
+			<div class="section-head">
+				<span class="section-num">02</span>
+				<h2 class="section-title">Open to independent verification</h2>
+				<p class="section-desc">
+					Useful contributions challenge assumptions, add regression evidence, or
+					make simulation limits clearer. They do not add live execution.
+				</p>
+			</div>
+			<a class="proof-card" href={repositoryUrl} target="_blank" rel="noopener">
+				<div>
+					<span class="proof-label">Public source · Python · Docker</span>
+					<h3>Inspect the implementation and safety boundary</h3>
+					<p>The README documents data sources, assumptions, risk limits, test commands, and the explicit separation from live trading.</p>
+				</div>
+				<span class="proof-state">SOURCE ↗</span>
+			</a>
+		</section>
+	</main>
+
+	<footer class="site-footer project-footer">
+		<a href="/">← Engineering portfolio</a>
+		<span>Research tool · Paper ledger · No live execution</span>
+		<a href={repositoryUrl} target="_blank" rel="noopener">GitHub ↗</a>
+	</footer>
+</Layout>
+
+<style>
+	.project-header {
+		position: relative;
+	}
+
+	.project-hero {
+		padding-top: 96px;
+	}
+
+	.project-title {
+		font-size: clamp(3.2rem, 8.5vw, 8.5rem);
+	}
+
+	.safety-callout {
+		max-width: 760px;
+		margin: 36px 0;
+		padding: 22px 24px;
+		border: 1px solid var(--border);
+		border-left: 4px solid var(--accent);
+		background: color-mix(in srgb, var(--accent) 7%, transparent);
+	}
+
+	.safety-callout strong {
+		display: block;
+		margin-bottom: 8px;
+		font-family: 'Geist Mono', monospace;
+		font-size: 0.78rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+	}
+
+	.safety-callout p {
+		margin: 0;
+		line-height: 1.7;
+	}
+
+	.project-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.project-proof {
+		padding-bottom: 120px;
+	}
+
+	@media (max-width: 900px) {
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.project-hero {
+			padding-top: 56px;
+		}
+
+		.project-footer {
+			align-items: flex-start;
+			gap: 16px;
+		}
+	}
+</style>
