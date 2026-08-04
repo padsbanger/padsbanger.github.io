@@ -8,6 +8,17 @@ body:
     attributes:
       value: |
         Thanks for the request. This issue is public. Do not include credentials, private code, customer data, or confidential details. Use email instead if the scope cannot be discussed publicly.
+  - type: dropdown
+    id: service
+    attributes:
+      label: Requested result
+      description: Choose the smallest useful deliverable. A $5 diagnostic is credited toward a $25 implementation of the same issue.
+      options:
+        - $5 diagnostic — root cause, relevant files, fix outline, and verification command; no code change
+        - $25 implementation — patch or PR plus focused verification evidence
+        - Not sure — recommend the smallest fitting option
+    validations:
+      required: true
   - type: input
     id: repository
     attributes:

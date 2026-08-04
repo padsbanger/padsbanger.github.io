@@ -8,6 +8,8 @@ const contactUrl =
 	'mailto:kontakt@michal-lach.pl?subject=Fixed-scope%20frontend%20fix&body=Repository%20or%20project%20URL%3A%0AProblem%3A%0ADefinition%20of%20done%3A%0ADeadline%3A';
 const githubContactUrl =
 	'https://github.com/padsbanger/padsbanger.github.io/issues/new?template=fixed-scope-request.yml&title=%5BScope%5D%20';
+const triageGithubContactUrl =
+	'https://github.com/padsbanger/padsbanger.github.io/issues/new?template=fixed-scope-request.yml&title=%5BTriage%5D%20';
 
 const structuredData = {
 	'@context': 'https://schema.org',
@@ -22,19 +24,30 @@ const structuredData = {
 	},
 	areaServed: 'Worldwide',
 	serviceType: 'Frontend software engineering',
-	offers: {
-		'@type': 'Offer',
-		price: '25',
-		priceCurrency: 'USD',
-		availability: 'https://schema.org/LimitedAvailability',
-		url: 'https://michal-lach.pl/services/',
-	},
+	offers: [
+		{
+			'@type': 'Offer',
+			name: 'Frontend issue diagnostic',
+			price: '5',
+			priceCurrency: 'USD',
+			availability: 'https://schema.org/LimitedAvailability',
+			url: 'https://michal-lach.pl/services/#options',
+		},
+		{
+			'@type': 'Offer',
+			name: 'Fixed-scope frontend implementation',
+			price: '25',
+			priceCurrency: 'USD',
+			availability: 'https://schema.org/LimitedAvailability',
+			url: 'https://michal-lach.pl/services/#options',
+		},
+	],
 };
 ---
 
 <Layout
 	title="24-hour React & TypeScript code fix — Michał Lach"
-	description="A fixed-scope React, TypeScript, or JavaScript code fix delivered with tests or reproducible verification notes. From $25 per bounded task."
+	description="A $5 bounded frontend diagnostic or $25 fixed-scope React, TypeScript, or JavaScript code fix, delivered with reproducible verification evidence."
 	keywords={[
 		'React bug fix',
 		'TypeScript code fix',
@@ -52,9 +65,9 @@ const structuredData = {
 			<span class="brand-name">Fixed-scope delivery</span>
 		</a>
 		<nav class="nav" aria-label="Service page">
-			<a href="#fit"><span class="num">01</span> Fit</a>
-			<a href="#proof"><span class="num">02</span> Proof</a>
-			<a href="#process"><span class="num">03</span> Process</a>
+			<a href="#options"><span class="num">01</span> Options</a>
+			<a href="#fit"><span class="num">02</span> Fit</a>
+			<a href="#proof"><span class="num">03</span> Proof</a>
 		</nav>
 		<div class="header-actions">
 			<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
@@ -96,16 +109,16 @@ const structuredData = {
 				</p>
 
 				<dl class="readouts">
-					<div class="readout"><dt>Starter price</dt><dd>$25 fixed</dd></div>
+					<div class="readout"><dt>Diagnostic</dt><dd>$5 fixed</dd></div>
 					<div class="readout"><dt>Target</dt><dd>Within 24 hours</dd></div>
-					<div class="readout"><dt>Output</dt><dd>PR or patch + proof</dd></div>
+					<div class="readout"><dt>Implementation</dt><dd>$25 fixed</dd></div>
 					<div class="readout"><dt>Start gate</dt><dd>Written scope</dd></div>
 				</dl>
 
 				<div class="hero-actions">
-					<a href={githubContactUrl} class="btn btn--solid" data-service-cta="hero-github">Open a scope request</a>
+					<a href={triageGithubContactUrl} class="btn btn--solid" data-service-cta="hero-triage">Start a $5 diagnostic</a>
+					<a href={githubContactUrl} class="btn btn--ghost" data-service-cta="hero-github">Request the $25 fix</a>
 					<a href={contactUrl} class="btn btn--ghost" data-service-cta="hero-email">Send by email</a>
-					<a href="https://github.com/moshcoder/moshcode/pull/32" target="_blank" rel="noopener" class="btn btn--ghost">See merged proof ↗</a>
 				</div>
 			</div>
 
@@ -113,13 +126,45 @@ const structuredData = {
 				<div class="metric"><span class="metric-num">10+</span><span class="metric-label">Years shipping<br />production UI</span></div>
 				<div class="metric"><span class="metric-num">01</span><span class="metric-label">Bounded issue<br />per engagement</span></div>
 				<div class="metric"><span class="metric-num">24h</span><span class="metric-label">Target<br />turnaround</span></div>
-				<div class="metric"><span class="metric-num">$25</span><span class="metric-label">Starter<br />fixed price</span></div>
+				<div class="metric"><span class="metric-num">$5</span><span class="metric-label">Low-risk<br />diagnostic</span></div>
 			</div>
 		</section>
 
-		<section class="section section--alt" id="fit">
+		<section class="section section--alt" id="options">
 			<div class="section-head">
 				<span class="section-num">01</span>
+				<h2 class="section-title">Choose the smallest useful result</h2>
+				<p class="section-desc">Start with evidence only, or buy the bounded implementation. The diagnostic is credited if the same issue proceeds to a fix.</p>
+			</div>
+			<div class="service-options">
+				<article class="service-option">
+					<div class="service-option-head"><span>Diagnostic</span><strong>$5</strong></div>
+					<h3>Know where the issue lives</h3>
+					<p>For one public, reproducible frontend issue: a root-cause note, the relevant files and code path, a focused fix outline, and one verification command. No code change is included.</p>
+					<ul>
+						<li>Written result within 4 hours of accepted scope</li>
+						<li>Binary deliverable—no open-ended consulting</li>
+						<li>Full $5 credited toward the same $25 fix</li>
+					</ul>
+					<a href={triageGithubContactUrl} class="btn btn--solid" data-service-cta="options-triage">Request the $5 diagnostic</a>
+				</article>
+				<article class="service-option service-option--primary">
+					<div class="service-option-head"><span>Implementation</span><strong>$25</strong></div>
+					<h3>Receive the patch and proof</h3>
+					<p>For one agreed frontend issue: diagnosis, implementation, and a reviewable pull request or patch with focused automated tests or explicit verification notes.</p>
+					<ul>
+						<li>Target delivery within 24 hours</li>
+						<li>One written scope and acceptance check</li>
+						<li>One focused correction pass if criteria are missed</li>
+					</ul>
+					<a href={githubContactUrl} class="btn btn--solid" data-service-cta="options-fix">Request the $25 fix</a>
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="fit">
+			<div class="section-head">
+				<span class="section-num">02</span>
 				<h2 class="section-title">Good fit</h2>
 				<p class="section-desc">Small enough to verify quickly, important enough to stop blocking your release.</p>
 			</div>
@@ -151,9 +196,9 @@ const structuredData = {
 			</div>
 		</section>
 
-		<section class="section" id="proof">
+		<section class="section section--alt" id="proof">
 			<div class="section-head">
-				<span class="section-num">02</span>
+				<span class="section-num">03</span>
 				<h2 class="section-title">Recent proof</h2>
 				<p class="section-desc">The deliverable—not the promise—is the useful unit.</p>
 			</div>
@@ -167,9 +212,9 @@ const structuredData = {
 			</a>
 		</section>
 
-		<section class="section section--alt" id="process">
+		<section class="section" id="process">
 			<div class="section-head">
-				<span class="section-num">03</span>
+				<span class="section-num">04</span>
 				<h2 class="section-title">Simple process</h2>
 			</div>
 			<ol class="service-process">
@@ -181,17 +226,18 @@ const structuredData = {
 
 		<section class="section section--contact service-contact">
 			<div class="section-head">
-				<span class="section-num">04</span>
+				<span class="section-num">05</span>
 				<h2 class="section-title">Send one issue</h2>
 			</div>
 			<p class="contact-lead">If it cannot be bounded and verified, I will say so before any work starts.</p>
 			<div class="hero-actions service-contact-actions">
-				<a href={githubContactUrl} class="btn btn--solid" data-service-cta="contact-github">Open a public GitHub request</a>
+				<a href={triageGithubContactUrl} class="btn btn--solid" data-service-cta="contact-triage">Start a $5 diagnostic</a>
+				<a href={githubContactUrl} class="btn btn--ghost" data-service-cta="contact-github">Request the $25 fix</a>
 				<a href={contactUrl} class="btn btn--ghost" data-service-cta="contact-email">Send a private email</a>
 			</div>
 			<p class="service-privacy">Do not include credentials, private code, or confidential details in a public GitHub request.</p>
 			<a href={contactUrl} class="contact-mail service-email" data-service-cta="contact-address">kontakt@michal-lach.pl</a>
-			<p class="service-fineprint">Starter price applies to one small issue with an accessible codebase and clear acceptance criteria. Larger scope is quoted before work begins.</p>
+			<p class="service-fineprint">Both prices apply to one small issue with an accessible codebase and clear acceptance criteria. The $5 diagnostic contains no code change and is credited only toward implementation of that same issue. Larger scope is quoted before work begins.</p>
 		</section>
 	</main>
 
