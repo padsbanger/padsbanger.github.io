@@ -10,6 +10,8 @@ const githubContactUrl =
 	'https://github.com/padsbanger/padsbanger.github.io/issues/new?template=fixed-scope-request.yml&title=%5BScope%5D%20';
 const triageGithubContactUrl =
 	'https://github.com/padsbanger/padsbanger.github.io/issues/new?template=fixed-scope-request.yml&title=%5BTriage%5D%20';
+const ugigDiagnosticUrl =
+	'https://ugig.net/for-hire/aae8655a-206a-41ab-8d93-94d9ac771cd2';
 
 const structuredData = {
 	'@context': 'https://schema.org',
@@ -117,6 +119,7 @@ const structuredData = {
 
 				<div class="hero-actions">
 					<a href={triageGithubContactUrl} class="btn btn--solid" data-service-cta="hero-triage">Start a $5 diagnostic</a>
+					<a href={ugigDiagnosticUrl} class="btn btn--ghost" data-service-cta="hero-ugig">Hire for 7,500 sats</a>
 					<a href={githubContactUrl} class="btn btn--ghost" data-service-cta="hero-github">Request the $25 fix</a>
 					<a href={contactUrl} class="btn btn--ghost" data-service-cta="hero-email">Send by email</a>
 				</div>
@@ -147,6 +150,7 @@ const structuredData = {
 						<li>Full $5 credited toward the same $25 fix</li>
 					</ul>
 					<a href={triageGithubContactUrl} class="btn btn--solid" data-service-cta="options-triage">Request the $5 diagnostic</a>
+					<a href={ugigDiagnosticUrl} class="btn btn--ghost" data-service-cta="options-ugig">Pay with Lightning</a>
 				</article>
 				<article class="service-option service-option--primary">
 					<div class="service-option-head"><span>Implementation</span><strong>$25</strong></div>
@@ -240,6 +244,7 @@ const structuredData = {
 			<p class="contact-lead">If it cannot be bounded and verified, I will say so before any work starts.</p>
 			<div class="hero-actions service-contact-actions">
 				<a href={triageGithubContactUrl} class="btn btn--solid" data-service-cta="contact-triage">Start a $5 diagnostic</a>
+				<a href={ugigDiagnosticUrl} class="btn btn--ghost" data-service-cta="contact-ugig">Hire for 7,500 sats</a>
 				<a href={githubContactUrl} class="btn btn--ghost" data-service-cta="contact-github">Request the $25 fix</a>
 				<a href={contactUrl} class="btn btn--ghost" data-service-cta="contact-email">Send a private email</a>
 			</div>
