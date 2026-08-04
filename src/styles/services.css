@@ -104,6 +104,21 @@
 	margin-top: 1.5rem;
 }
 
+.service-contact-actions {
+	margin-bottom: 1rem;
+}
+
+.service-privacy {
+	max-width: 70ch;
+	margin-bottom: 1.5rem;
+	color: var(--ink-soft);
+	font-size: 0.78rem;
+}
+
+.service-email {
+	font-size: clamp(1.35rem, 4vw, 3rem);
+}
+
 .service-footer {
 	grid-template-columns: repeat(3, auto);
 }

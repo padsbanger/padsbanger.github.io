@@ -1,0 +1,46 @@
+name: Fixed-scope React or TypeScript request
+description: Request a quote for one bounded frontend issue with a verifiable handoff.
+title: "[Scope] "
+labels:
+  - service-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the request. This issue is public. Do not include credentials, private code, customer data, or confidential details. Use email instead if the scope cannot be discussed publicly.
+  - type: input
+    id: repository
+    attributes:
+      label: Repository or project URL
+      description: Link to the public repository or a public reproduction.
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and reproduction
+      description: What happens now, and what steps reproduce it?
+      placeholder: Describe the smallest reproducible issue.
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      description: State the observable result that would make the task complete.
+      placeholder: The task is complete when...
+    validations:
+      required: true
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline or timing constraint
+      placeholder: Within 24 hours, before a release, or no hard deadline
+  - type: checkboxes
+    id: public-confirmation
+    attributes:
+      label: Public-information confirmation
+      options:
+        - label: I have not included credentials, private code, customer data, or confidential information.
+          required: true
