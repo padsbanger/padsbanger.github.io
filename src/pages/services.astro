@@ -14,6 +14,8 @@ const ugigDiagnosticUrl =
 	'https://ugig.net/for-hire/aae8655a-206a-41ab-8d93-94d9ac771cd2';
 const ugigDataCleanupUrl =
 	'https://ugig.net/for-hire/98b7f7de-2e2d-4ec6-8188-c7945f56be36';
+const payanAgentOfferUrl =
+	'https://payanagent.com/marketplace/offers/kh785x9rs876csws0xftz215218bxdrs';
 
 const structuredData = {
 	'@context': 'https://schema.org',
@@ -173,6 +175,14 @@ const structuredData = {
 					<p>Send one sanitized file up to 25 MB or 100,000 rows. Receive a cleaned output, validation summary, and reusable Python script within four hours of accepted scope.</p>
 				</div>
 				<a href={ugigDataCleanupUrl} class="btn btn--solid" data-service-cta="options-data-cleanup">Clean one file on uGig</a>
+			</aside>
+			<aside class="service-alt-offer" aria-labelledby="paid-work-api-title">
+				<div>
+					<span class="proof-label">Agent API · $0.01 USDC via x402</span>
+					<h3 id="paid-work-api-title">Fresh paid-work and bounty snapshot</h3>
+					<p>A machine-readable shortlist refreshed every 15 minutes from 24 monitored sources, with canonical task URLs, rewards, expected-profit signals, competition and freshness evidence, and explicit risk flags.</p>
+				</div>
+				<a href={payanAgentOfferUrl} class="btn btn--solid" data-service-cta="options-payanagent">Inspect the agent API</a>
 			</aside>
 		</section>
 
