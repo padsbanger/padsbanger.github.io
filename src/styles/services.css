@@ -96,6 +96,35 @@
 	margin-top: auto;
 }
 
+.service-alt-offer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+	border: 1px solid var(--line-strong);
+	border-top: 0;
+	background: var(--paper-2);
+	padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.service-alt-offer h3 {
+	margin-bottom: 0.65rem;
+	font-family: var(--sans);
+	font-size: clamp(1.45rem, 3vw, 2.25rem);
+	letter-spacing: -0.035em;
+	line-height: 1.05;
+}
+
+.service-alt-offer p {
+	max-width: 68ch;
+	color: var(--ink-soft);
+	font-size: 0.88rem;
+}
+
+.service-alt-offer .btn {
+	flex: none;
+}
+
 .proof-card {
 	display: flex;
 	align-items: flex-start;
@@ -222,6 +251,11 @@
 @media (max-width: 700px) {
 	.service-options {
 		grid-template-columns: 1fr;
+	}
+
+	.service-alt-offer {
+		align-items: flex-start;
+		flex-direction: column;
 	}
 
 	.service-hero .readouts,

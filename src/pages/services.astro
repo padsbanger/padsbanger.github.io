@@ -12,6 +12,8 @@ const triageGithubContactUrl =
 	'https://github.com/padsbanger/padsbanger.github.io/issues/new?template=fixed-scope-request.yml&title=%5BTriage%5D%20';
 const ugigDiagnosticUrl =
 	'https://ugig.net/for-hire/aae8655a-206a-41ab-8d93-94d9ac771cd2';
+const ugigDataCleanupUrl =
+	'https://ugig.net/for-hire/98b7f7de-2e2d-4ec6-8188-c7945f56be36';
 
 const structuredData = {
 	'@context': 'https://schema.org',
@@ -150,7 +152,7 @@ const structuredData = {
 						<li>Full $5 credited toward the same $25 fix</li>
 					</ul>
 					<a href={triageGithubContactUrl} class="btn btn--solid" data-service-cta="options-triage">Request the $5 diagnostic</a>
-					<a href={ugigDiagnosticUrl} class="btn btn--ghost" data-service-cta="options-ugig">Pay with Lightning</a>
+					<a href={ugigDiagnosticUrl} class="btn btn--ghost" data-service-cta="options-ugig">Hire on uGig</a>
 				</article>
 				<article class="service-option service-option--primary">
 					<div class="service-option-head"><span>Implementation</span><strong>$25</strong></div>
@@ -164,6 +166,14 @@ const structuredData = {
 					<a href={githubContactUrl} class="btn btn--solid" data-service-cta="options-fix">Request the $25 fix</a>
 				</article>
 			</div>
+			<aside class="service-alt-offer" aria-labelledby="data-cleanup-title">
+				<div>
+					<span class="proof-label">Also available · Data utility</span>
+					<h3 id="data-cleanup-title">Clean one CSV or JSON file for $5</h3>
+					<p>Send one sanitized file up to 25 MB or 100,000 rows. Receive a cleaned output, validation summary, and reusable Python script within four hours of accepted scope.</p>
+				</div>
+				<a href={ugigDataCleanupUrl} class="btn btn--solid" data-service-cta="options-data-cleanup">Clean one file on uGig</a>
+			</aside>
 		</section>
 
 		<section class="section" id="fit">
