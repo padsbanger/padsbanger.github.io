@@ -16,6 +16,8 @@ const ugigDataCleanupUrl =
 	'https://ugig.net/for-hire/98b7f7de-2e2d-4ec6-8188-c7945f56be36';
 const payanAgentOfferUrl =
 	'https://payanagent.com/marketplace/offers/kh785x9rs876csws0xftz215218bxdrs';
+const payanAgentAuditUrl =
+	'https://payanagent.com/marketplace/offers/kh71qr00v4txqhakqmq56zf24s8bxdv2';
 
 const structuredData = {
 	'@context': 'https://schema.org',
@@ -183,6 +185,14 @@ const structuredData = {
 					<p>A machine-readable shortlist refreshed every 15 minutes from 24 monitored sources, with canonical task URLs, rewards, expected-profit signals, competition and freshness evidence, and explicit risk flags.</p>
 				</div>
 				<a href={payanAgentOfferUrl} class="btn btn--solid" data-service-cta="options-payanagent">Inspect the agent API</a>
+			</aside>
+			<aside class="service-alt-offer" aria-labelledby="x402-audit-title">
+				<div>
+					<span class="proof-label">Seller API · $0.05 USDC via x402</span>
+					<h3 id="x402-audit-title">Audit an x402 offer's live discoverability</h3>
+					<p>Check one PayanAgent offer against up to five buyer phrases. Receive current top-50 ranks, leading competitors and prices, public delivery evidence, and unpaid challenge readiness—without sharing a seller key.</p>
+				</div>
+				<a href={payanAgentAuditUrl} class="btn btn--solid" data-service-cta="options-payanagent-audit">Inspect the x402 audit</a>
 			</aside>
 		</section>
 
