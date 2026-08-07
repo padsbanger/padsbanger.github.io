@@ -4,6 +4,7 @@ interface Props {
 	description?: string;
 	keywords?: string[];
 	structuredData?: Record<string, unknown> | Record<string, unknown>[];
+	bootLoader?: boolean;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
 	description = 'Senior Frontend Engineer specializing in React, TypeScript, frontend architecture, design systems, and scalable web applications.',
 	keywords = [],
 	structuredData,
+	bootLoader = false,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL('https://michal-lach.pl');
@@ -32,6 +34,13 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{
+			bootLoader && (
+				<script is:inline>
+					document.documentElement.classList.add('js');
+				</script>
+			)
+		}
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
 		<link rel="icon" href="/favicon.ico" />
