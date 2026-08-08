@@ -9,7 +9,7 @@ const experience = [
 		year: 'May 2024 — Present',
 		title: 'Nordea',
 		role: 'Senior Frontend Engineer',
-		text: 'Developing internal platforms for API onboarding, enterprise services, secure AI access management, and Redis tooling across engineering teams.',
+		text: 'Building internal platforms for API onboarding, enterprise services, secure AI access, and Redis operations — turning complex platform workflows into usable tools for engineering teams.',
 		stack: ['Enterprise platform', 'API integrations', 'AI tooling', 'Security'],
 	},
 	{
@@ -17,7 +17,7 @@ const experience = [
 		year: 'Aug 2020 — Apr 2024',
 		title: 'MasterBorn',
 		role: 'Frontend / Lead Frontend Engineer',
-		text: 'Led React and TypeScript frontend work for payment processing at Payments.ai and sports video streaming at watch.outsideonline.com, cycling analytics, and medical device inspection workflows.',
+		text: 'Led React and TypeScript delivery across payment processing, sports video streaming, cycling analytics, and medical-device inspection products, balancing shared architecture with distinct product needs.',
 		stack: ['Redux', 'Next.js', 'TypeScript', 'Payments', 'Video streaming'],
 	},
 	{
@@ -25,7 +25,7 @@ const experience = [
 		year: 'Feb 2019 — Jul 2020',
 		title: 'JIT Team',
 		role: 'Frontend Engineer',
-		text: 'Built hybrid PWA applications for ship inspection processes and frontend systems for smart city and IoT management platforms.',
+		text: 'Built hybrid PWA workflows for ship inspections and frontend systems for smart-city and IoT operations, translating field processes into dependable product interfaces.',
 		stack: ['React', 'Material UI', 'PWA', 'IoT', 'Inspection tools'],
 	},
 	{
@@ -33,7 +33,7 @@ const experience = [
 		year: 'Jul 2016 — Jan 2019',
 		title: 'Schibsted Tech Polska',
 		role: 'UI Developer / Lead Frontend Developer',
-		text: 'Led frontend development for booking and marketplace platform Styletime.no, recommendation features, and reusable component architecture.',
+		text: 'Led frontend development for the Styletime.no booking marketplace, including recommendations and reusable component architecture.',
 		stack: ['SSR', 'Tailwind CSS', 'TanStack Query', 'Marketplaces'],
 	},
 	{
@@ -41,7 +41,7 @@ const experience = [
 		year: 'May 2015 — Jun 2016',
 		title: 'EPAM Systems',
 		role: 'UI Software Developer',
-		text: 'Worked on internal enterprise frontend projects, performed code reviews, and contributed to shared development standards.',
+		text: 'Delivered internal enterprise interfaces, reviewed frontend work, and contributed to shared engineering standards.',
 		stack: ['Enterprise UI', 'Reviews', 'Standards'],
 	},
 	{
@@ -49,56 +49,84 @@ const experience = [
 		year: 'Aug 2013 — Apr 2015',
 		title: 'Misys',
 		role: 'Software Developer',
-		text: 'Developed frontend features for financial risk analysis software, maintained cross-browser compatibility, and introduced end-to-end testing practices.',
+		text: 'Developed financial risk-analysis interfaces, maintained cross-browser compatibility, and introduced end-to-end testing practices.',
 		stack: ['Fintech', 'E2E testing', 'Compatibility'],
 	},
 ];
 
+const featuredProject = {
+	tag: 'Featured product · TypeScript',
+	title: 'Omnia',
+	version: 'v0.10.0',
+	text: 'A desktop workspace for organizing messaging, email, calendars, music, and productivity tools in one focused, configurable environment.',
+	architecture: 'Electron main, preload, and React renderer layers are separated so privileged desktop APIs stay behind a context-isolated IPC boundary.',
+	platforms: ['Windows', 'macOS', 'Linux'],
+	stack: ['Electron', 'React', 'TypeScript', 'Vite'],
+	download: 'https://github.com/padsbanger/omnia/releases/latest',
+	github: 'https://github.com/padsbanger/omnia',
+	images: [
+		{
+			src: '/images/omnia-workspace.webp',
+			alt: 'Omnia desktop workspace showing Mail, Slack, Calendar, and Spotify in a four-pane grid.',
+		},
+		{
+			src: '/images/omnia-communications.webp',
+			alt: 'Omnia desktop workspace showing Gmail, WhatsApp, Calendar, and Telegram in a four-pane grid.',
+		},
+	],
+};
+
 const sideProjects = [
 	{
-		tag: 'GH-01 · TypeScript',
-		title: 'Omnia',
-		text: 'Desktop workspace organizer that unifies web-based apps like messaging, email, and productivity tools into one focused multitasking environment.',
-		stack: ['Electron', 'Desktop app', 'Productivity'],
-		link: 'https://github.com/padsbanger/omnia',
-	},
-	{
-		tag: 'GH-02 · Rust',
+		tag: 'GH-01 · Rust',
 		title: 'Bandcamp Archiver',
 		text: 'CLI tool for archiving Bandcamp albums, built as a focused utility around collection preservation and local music workflows.',
 		stack: ['Rust', 'CLI', 'Music archive'],
 		link: 'https://github.com/padsbanger/bandcamp-archiver',
 	},
 	{
-		tag: 'GH-03 · TypeScript',
+		tag: 'GH-02 · TypeScript',
 		title: 'Spotify TUI',
-		text: 'Simple terminal client for Spotify, exploring command-line music control through a lightweight text interface.',
+		text: 'Lightweight terminal client for Spotify, exploring focused command-line music control through a text interface.',
 		stack: ['TypeScript', 'Terminal UI', 'Spotify'],
 		link: 'https://github.com/padsbanger/spotify-tui',
 	},
-		{
-		tag: 'GH-04 · Webkit Extension',
+	{
+		tag: 'GH-03 · Browser Extension',
 		title: 'YouTube Subscriptions Fixer',
-		text: 'Extension for Webkit based browsers (Chrome & Brave) to bring back old subscriptions view.',
-		stack: ['TypeScript', 'Chrome/Webkit', 'Youtube'],
+		text: 'Chromium extension for Chrome and Brave that restores a compact subscriptions view on YouTube.',
+		stack: ['TypeScript', 'Chromium', 'YouTube'],
 		link: 'https://github.com/padsbanger/chrome-youtube-subscriptions',
 	},
 ];
 
-const systems = [
-	{ label: 'Frontend', value: 'React, Next.js, TypeScript, JavaScript, HTML5, CSS3' },
-	{ label: 'State', value: 'Redux Toolkit, Zustand, MobX, Context API, RTK Query' },
-	{ label: 'APIs', value: 'REST, GraphQL, Apollo Client, Axios, Fetch' },
-	{ label: 'Styling', value: 'Tailwind CSS, Styled Components, Emotion, CSS Modules, Sass' },
-	{ label: 'Testing', value: 'Jest, React Testing Library, Vitest, Protractor' },
-	{ label: 'Tooling', value: 'Vite, Webpack, Docker, Git, GitHub, Jenkins, TeamCity' },
-	{ label: 'AI', value: 'Ollama, Copilot, vLLM, ollama.cpp' },
+const capabilities = [
+	{
+		label: 'Architecture',
+		value: 'Scalable React and Next.js applications, reusable component systems, SSR, and frontend platforms.',
+	},
+	{
+		label: 'Data & state',
+		value: 'Redux Toolkit, Zustand, RTK Query, GraphQL, Apollo Client, and REST integrations.',
+	},
+	{
+		label: 'Quality',
+		value: 'Performance, accessibility, Jest, React Testing Library, Vitest, and end-to-end testing.',
+	},
+	{
+		label: 'Delivery',
+		value: 'TypeScript, Vite, Webpack, Docker, GitHub, Jenkins, TeamCity, and maintainable CI/CD workflows.',
+	},
+	{
+		label: 'AI tooling',
+		value: 'Ollama, GitHub Copilot, vLLM, and llama.cpp for local and enterprise AI workflows.',
+	},
 ];
 
 const aboutItems = [
 	{
 		label: 'Profile',
-		text: '10+ years delivering production frontend systems with product, backend, and design teams in agile environments.',
+		text: 'Building production frontend systems since 2013, working across product, backend, design, and platform teams.',
 	},
 	{
 		label: 'Industries',
@@ -110,7 +138,9 @@ const aboutItems = [
 	},
 ];
 
-const marqueeItems = ['React', '·', 'TypeScript', '·', 'Next.js', '·', 'Redux Toolkit', '·', 'GraphQL', '·', 'Tailwind CSS', '·', 'Styled Components', '.', 'Vite', '·', 'Testing', '·'];
+const recentExperience = experience.slice(0, 3);
+const earlierExperience = experience.slice(3);
+const currentYear = new Date().getFullYear();
 
 const seoKeywords = [
 	'Michał Lach',
@@ -191,7 +221,7 @@ const structuredData = [
 			<div class="boot-progress" aria-hidden="true">
 				<span></span>
 			</div>
-			<span class="boot-skip">[ press any key to skip ]</span>
+			<span class="boot-skip">[ click or press any key to skip ]</span>
 		</div>
 	</div>
 
@@ -208,10 +238,20 @@ const structuredData = [
 		<nav class="nav" aria-label="Primary">
 			<a href="#experience"><span class="num">01</span> Experience</a>
 			<a href="#projects"><span class="num">02</span> Projects</a>
-			<a href="#systems"><span class="num">03</span> Systems</a>
+			<a href="#systems"><span class="num">03</span> Capabilities</a>
 			<a href="#about"><span class="num">04</span> About</a>
 			<a href="#contact"><span class="num">05</span> Contact</a>
 		</nav>
+		<details class="mobile-nav">
+			<summary>Menu</summary>
+			<nav aria-label="Mobile navigation">
+				<a href="#experience"><span>01</span> Experience</a>
+				<a href="#projects"><span>02</span> Projects</a>
+				<a href="#systems"><span>03</span> Capabilities</a>
+				<a href="#about"><span>04</span> About</a>
+				<a href="#contact"><span>05</span> Contact</a>
+			</nav>
+		</details>
 		<div class="header-actions">
 			<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
 				<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -222,7 +262,7 @@ const structuredData = [
 					<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
 				</svg>
 			</button>
-			<a href="#contact" class="btn btn--solid">Let's talk</a>
+			<a href="#contact" class="btn btn--solid header-contact">Contact</a>
 		</div>
 	</header>
 
@@ -234,14 +274,6 @@ const structuredData = [
 				<span class="tick tick--bl" aria-hidden="true"></span>
 				<span class="tick tick--br" aria-hidden="true"></span>
 
-				<div class="hero-meta" aria-hidden="true">
-					<span class="hero-meta-item">The desk of Michał Lach</span>
-					<span class="hero-meta-item">Frontend · Systems · Delivery</span>
-					<span class="hero-meta-item hero-meta-item--clock">
-						<span id="hud-date">···, ··· ·· ····</span> · <span id="hud-clock">··:··:··</span> UTC
-					</span>
-				</div>
-
 				<p class="eyebrow reveal">Senior Frontend Engineer — Gdynia, PL / Remote</p>
 				<h1 class="hero-title">
 					<span class="sr-only">Michał Lach — Senior Frontend Engineer.</span>
@@ -250,77 +282,43 @@ const structuredData = [
 					<span class="reveal" style="--d:1">for complex <span class="accent">products.</span></span>
 				</h1>
 				<p class="hero-sub reveal" style="--d:2">
-					Performance, design systems, state management, and developer
-					experience — across fintech, AI, enterprise, and media products.
+					Since 2013, I have delivered React and TypeScript products across enterprise AI,
+					fintech, media, healthcare, and IoT.
 				</p>
 
-				<dl class="readouts reveal" style="--d:3">
-					<div class="readout">
-						<dt>Status</dt>
-						<dd>Deployed in production <span class="dot dot--live" aria-hidden="true"></span></dd>
-					</div>
-					<div class="readout">
-						<dt>Sector</dt>
-						<dd>AI / Enterprise / Fintech</dd>
-					</div>
-					<div class="readout">
-						<dt>Location</dt>
-						<dd>Gdynia, PL · Remote</dd>
-					</div>
-					<div class="readout">
-						<dt>Field operation</dt>
-						<dd>Active</dd>
-					</div>
-				</dl>
-
-				<div class="hero-actions reveal" style="--d:4">
+				<div class="hero-actions reveal" style="--d:3">
 					<a href="#experience" class="btn btn--solid">View experience</a>
-					<a href="#contact" class="btn btn--ghost">Get in touch →</a>
+					<a href="/cv.pdf" class="btn btn--ghost" target="_blank" rel="noopener">Download CV ↗</a>
 				</div>
 			</div>
 
-			<div class="metrics reveal" style="--d:5">
+			<div class="metrics metrics--compact reveal" style="--d:4">
 				<div class="metric">
-					<span class="metric-num">10+</span>
-					<span class="metric-label">Years in<br />production</span>
+					<span class="metric-num">2013</span>
+					<span class="metric-label">Building for<br />production since</span>
 				</div>
 				<div class="metric">
 					<span class="metric-num">06</span>
-					<span class="metric-label">Companies<br />shipped with</span>
+					<span class="metric-label">Engineering<br />organizations</span>
 				</div>
 				<div class="metric">
-					<span class="metric-num">07</span>
-					<span class="metric-label">Industries<br />delivered for</span>
-				</div>
-				<div class="metric">
-					<span class="metric-num">05</span>
-					<span class="metric-label">Open-source<br />side projects</span>
+					<span class="metric-num">04</span>
+					<span class="metric-label">Open-source<br />projects featured</span>
 				</div>
 			</div>
 		</section>
-
-		<div class="marquee" tabindex="0" aria-label={`Frontend stack: ${marqueeItems.join(' ')}`}>
-			<div class="marquee-track">
-				<div class="marquee-group" aria-hidden="true">
-					{marqueeItems.map((item) => <span>{item}</span>)}
-				</div>
-				<div class="marquee-group" aria-hidden="true">
-					{marqueeItems.map((item) => <span>{item}</span>)}
-				</div>
-			</div>
-		</div>
 
 		<section class="section" id="experience">
 			<div class="section-head">
 				<span class="section-num">01</span>
 				<h2 class="section-title">Experience</h2>
 				<p class="section-desc">
-					10+ years delivering production frontend systems with product, backend, and design teams in agile environments.
+					Production frontend delivery since 2013, across product, platform, backend, and design teams.
 				</p>
 			</div>
 
-			<div class="cases">
-				{experience.map((item) => (
+			<div class="cases cases--recent">
+				{recentExperience.map((item) => (
 					<article class="case reveal">
 						<div class="case-meta">
 							<span class="case-tag">{item.tag}</span>
@@ -328,7 +326,7 @@ const structuredData = [
 						</div>
 						<h3 class="case-title">{item.title}</h3>
 						<p class="case-role">{item.role}</p>
-							<span class={`case-status${item.year.includes('Present') ? ' is-active' : ''}`} aria-hidden="true">{item.year.includes('Present') ? 'ACTIVE' : 'ARCHIVED'}</span>
+						{item.year.includes('Present') && <span class="case-status is-active" aria-hidden="true">CURRENT</span>}
 						<p class="case-text">{item.text}</p>
 						<div class="case-stack">
 							{item.stack.map((stackItem) => <span>{stackItem}</span>)}
@@ -336,16 +334,91 @@ const structuredData = [
 					</article>
 				))}
 			</div>
+
+			<div class="earlier-career">
+				<div class="earlier-career-head">
+					<span>Earlier experience</span>
+					<span>2013 — 2020</span>
+				</div>
+				<div class="earlier-career-grid">
+					{earlierExperience.map((item) => (
+						<article class="earlier-role reveal">
+							<div class="earlier-role-meta">
+								<span>{item.tag}</span>
+								<span>{item.year}</span>
+							</div>
+							<h3>{item.title}</h3>
+							<p class="earlier-role-title">{item.role}</p>
+							<p>{item.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
 		</section>
 
 		<section class="section section--alt" id="projects">
 			<div class="section-head">
 				<span class="section-num">02</span>
 				<h2 class="section-title">Side projects</h2>
-				<p class="section-desc">Side projects arranged as compact build studies.</p>
+				<p class="section-desc">A featured desktop product, followed by focused tools for music workflows and a better web.</p>
 			</div>
 
-			<div class="cases">
+			<article class="featured-project reveal" aria-labelledby="omnia-title">
+				<div class="featured-project-body">
+					<div class="featured-project-intro">
+						<div class="featured-project-meta">
+							<span>{featuredProject.tag}</span>
+							<span>Current release · {featuredProject.version}</span>
+						</div>
+						<h3 id="omnia-title">{featuredProject.title}</h3>
+						<p>{featuredProject.text}</p>
+						<div class="case-stack" aria-label="Omnia technology stack">
+							{featuredProject.stack.map((item) => <span>{item}</span>)}
+						</div>
+					</div>
+
+					<div class="featured-project-details">
+						<div class="featured-project-detail">
+							<span>Supported platforms</span>
+							<ul>
+								{featuredProject.platforms.map((platform) => <li>{platform}</li>)}
+							</ul>
+						</div>
+						<div class="featured-project-detail">
+							<span>Architecture decision</span>
+							<p>{featuredProject.architecture}</p>
+						</div>
+						<div class="featured-project-actions">
+							<a class="btn btn--solid" href={featuredProject.download} target="_blank" rel="noopener">Download latest ↗</a>
+							<a class="btn btn--ghost" href={featuredProject.github} target="_blank" rel="noopener">View GitHub ↗</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="featured-project-gallery" aria-label="Omnia application screenshots">
+					{featuredProject.images.map((image, index) => (
+						<figure>
+							<a href={image.src} target="_blank" rel="noopener" aria-label={`Open Omnia screenshot ${index + 1} at full resolution`}>
+								<img
+									src={image.src}
+									alt={image.alt}
+									width="1586"
+									height="992"
+									loading="lazy"
+									decoding="async"
+								/>
+							</a>
+							<figcaption>Workspace configuration {String(index + 1).padStart(2, '0')}</figcaption>
+						</figure>
+					))}
+				</div>
+			</article>
+
+			<div class="project-list-head">
+				<span>More open-source work</span>
+				<span>03 repositories</span>
+			</div>
+			<div class="cases cases--projects">
 				{sideProjects.map((project) => (
 					<article class="case reveal">
 						<div class="case-meta">
@@ -365,15 +438,15 @@ const structuredData = [
 		<section class="section" id="systems">
 			<div class="section-head">
 				<span class="section-num">03</span>
-				<h2 class="section-title">Systems</h2>
+				<h2 class="section-title">Capabilities</h2>
 				<p class="section-desc">
-					Technical toolkit for scalable frontend delivery — component architecture, state management,
-					performance, testing, and developer experience.
+					The engineering capabilities I use to make complex frontend products easier to build,
+					operate, and evolve.
 				</p>
 			</div>
 
 			<div class="systems">
-				{systems.map((item) => (
+				{capabilities.map((item) => (
 					<div class="sys reveal">
 						<span class="sys-num">{item.label}</span>
 						<p>{item.value}</p>
@@ -389,8 +462,8 @@ const structuredData = [
 			</div>
 			<div class="about">
 				<p class="about-lead reveal">
-					I build <em>maintainable, scalable, production-grade</em> web applications — working at the
-					interface between product, backend, and design to ship frontend systems that last.
+					I build <em>maintainable frontend platforms</em> that make complex products easier to ship,
+					operate, and evolve.
 				</p>
 				<div class="about-grid">
 					{aboutItems.map((item) => (
@@ -412,19 +485,21 @@ const structuredData = [
 				Open to frontend roles, architecture-heavy product work, and teams that care
 				about building maintainable and usable systems.
 			</p>
-			<a
-				href="mailto:kontakt@michal-lach.pl"
-				class="contact-mail reveal"
-				data-copy-email="kontakt@michal-lach.pl"
-				aria-label="Copy email address kontakt@michal-lach.pl"
-				aria-live="polite"
-			>
-				kontakt@michal-lach.pl
-			</a>
+			<div class="contact-email-row reveal">
+				<a href="mailto:kontakt@michal-lach.pl" class="contact-mail">kontakt@michal-lach.pl</a>
+				<button
+					type="button"
+					class="copy-email"
+					data-copy-email="kontakt@michal-lach.pl"
+					aria-label="Copy email address kontakt@michal-lach.pl"
+					aria-live="polite"
+				>
+					Copy
+				</button>
+			</div>
 			<div class="contact-links reveal">
 				<a href="https://github.com/padsbanger" target="_blank" rel="noopener">GitHub ↗</a>
 				<a href="https://www.linkedin.com/in/micha%C5%82-lach-98854a6b/" target="_blank" rel="noopener">LinkedIn ↗</a>
-				<a href="mailto:kontakt@michal-lach.pl">Email ↗</a>
 				<a href="/cv.pdf" target="_blank" rel="noopener">Download CV ↗</a>
 			</div>
 		</section>
@@ -433,11 +508,10 @@ const structuredData = [
 	<footer class="site-footer">
 		<span class="sys-meta">
 			<a href="view-source:https://michal-lach.pl/" data-view-source>view-source</a>
-			<span>ml.system --version 1.0.0</span>
-			<span>uptime <span id="sys-uptime">00:00:00</span></span>
+			<span>Built with Astro</span>
 		</span>
-		<span>Michał Lach, frontend engineering · all work is my own</span>
-		<span class="sys-status" id="sys-status" aria-hidden="true">GDYNIA <span class="sys-clock" id="sys-clock">··:··:··</span> CET</span>
+		<span>© {currentYear} Michał Lach · Frontend Engineering</span>
+		<span class="sys-status" id="sys-status" aria-hidden="true">GDYNIA <span class="sys-clock" id="sys-clock">··:··:··</span> <span id="sys-zone">CET</span></span>
 		<a href="#top">Back to top ↑</a>
 	</footer>
 </Layout>

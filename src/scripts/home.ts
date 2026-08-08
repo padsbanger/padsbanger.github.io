@@ -1,9 +1,8 @@
 import { initActiveNav } from "./home/active-nav";
 import { initBoot } from "./home/boot";
 import { initCopyEmail } from "./home/contact";
-import { initFooterClock, initFooterEasterEgg, initHeroHud } from "./home/footer";
+import { initFooterClock, initFooterEasterEgg } from "./home/footer";
 import { initMagneticButtons, initSpotlight } from "./home/interactions";
-import { initMarquee } from "./home/marquee";
 import { reduceMotion } from "./home/motion";
 import { initReveal, initTitleScramble } from "./home/reveal";
 import { initScrollHud } from "./home/scroll-hud";
@@ -21,6 +20,4 @@ initSpotlight(reduceMotion);
 initMagneticButtons(reduceMotion);
 initFooterClock();
 initFooterEasterEgg();
-initHeroHud();
 initCopyEmail();
-initMarquee();

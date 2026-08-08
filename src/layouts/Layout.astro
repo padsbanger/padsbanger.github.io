@@ -38,6 +38,10 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 			bootLoader && (
 				<script is:inline>
 					document.documentElement.classList.add('js');
+					var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+					if (!reduceMotion) {
+						document.documentElement.classList.add('is-booting');
+					}
 				</script>
 			)
 		}
@@ -72,7 +76,7 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageUrl} />
-		<script src="https://t.contentsquare.net/uxa/ea62652ff2e07.js" defer></script>
+		<script is:inline src="https://t.contentsquare.net/uxa/ea62652ff2e07.js" defer></script>
 		<title>{title}</title>
 		<script is:inline>
 				/* Resolve the theme before first paint to avoid a flash of the wrong palette. */
@@ -86,11 +90,11 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 					} catch (e) {}
 				})();
 			</script>
-			{jsonLd && <script type="application/ld+json" set:html={jsonLd}></script>}
+			{jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd}></script>}
 		{
 			googleAnalyticsSnippet && (
 				<>
-					<script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+					<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
 					<script is:inline set:html={googleAnalyticsSnippet}></script>
 				</>
 			)

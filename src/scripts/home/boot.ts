@@ -21,6 +21,12 @@ export const initBoot = (reduceMotion: boolean) => {
   const bootLog = document.getElementById("boot-log");
   if (!boot || !bootLog) return;
 
+  const shouldBoot = document.documentElement.classList.contains("is-booting") && !reduceMotion;
+  if (!shouldBoot) {
+    boot.remove();
+    return;
+  }
+
   const dismissBoot = () => {
     if (boot.classList.contains("done")) return;
 
@@ -29,48 +35,21 @@ export const initBoot = (reduceMotion: boolean) => {
     window.setTimeout(() => boot.remove(), 600);
   };
 
-  if (!reduceMotion) {
-    document.documentElement.classList.add("is-booting");
-  }
-
   const lines = bootLines();
-  if (reduceMotion) {
-    bootLog.innerHTML = lines.join("\n");
-    dismissBoot();
-  } else {
-    let line = 0;
-    let character = 0;
-    let html = "";
+  let line = 0;
+  const writeLine = () => {
+    bootLog.innerHTML += `${lines[line]}\n`;
+    line += 1;
 
-    const tick = () => {
-      const raw = lines[line];
-      if (raw[character] === "<") {
-        const close = raw.indexOf(">", character);
-        character = close === -1 ? raw.length : close + 1;
-      } else {
-        character += 1;
-      }
+    if (line >= lines.length) {
+			window.setTimeout(dismissBoot, 600);
+      return;
+    }
 
-      bootLog.innerHTML = html + raw.slice(0, character);
+		window.setTimeout(writeLine, 320);
+  };
 
-      if (character >= raw.length) {
-        html += `${raw}\n`;
-        line += 1;
-        character = 0;
-
-        if (line >= lines.length) {
-          window.setTimeout(dismissBoot, 320);
-          return;
-        }
-
-        window.setTimeout(tick, 70);
-      } else {
-        window.setTimeout(tick, 4 + Math.floor(Math.random() * 7));
-      }
-    };
-
-    window.setTimeout(tick, 120);
-  }
+	window.setTimeout(writeLine, 180);
 
   window.addEventListener("keydown", dismissBoot, { once: true });
   boot.addEventListener("click", dismissBoot);

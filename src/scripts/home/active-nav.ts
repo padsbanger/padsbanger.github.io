@@ -4,6 +4,15 @@ type NavTarget = {
 };
 
 export const initActiveNav = () => {
+	const mobileNav = document.querySelector<HTMLDetailsElement>(".mobile-nav");
+	mobileNav?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => mobileNav.removeAttribute("open"));
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") mobileNav?.removeAttribute("open");
+	});
+
   const navTargets = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav a[href^="#"]'))
     .map((link) => {
       const target = link.hash ? document.querySelector<HTMLElement>(link.hash) : null;
