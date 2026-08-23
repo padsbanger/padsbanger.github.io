@@ -779,6 +779,97 @@ main,
   padding: 0.75rem 1rem;
 }
 
+/* ===== GitHub activity ===== */
+.github-activity {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--line-strong);
+  background: var(--paper-2);
+}
+
+.github-activity-copy {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.8fr) minmax(18rem, 1.2fr);
+  gap: 2rem;
+  border-bottom: 1px solid var(--line-strong);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.github-activity-kicker {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.github-activity h3 {
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: clamp(1.7rem, 4vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.github-activity-copy p {
+  align-self: end;
+  max-width: 58ch;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.github-calendar {
+  min-height: 190px;
+  overflow-x: auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  color: var(--muted);
+  scrollbar-color: var(--scrollbar-thumb) var(--paper-2);
+}
+
+.github-calendar > astro-island {
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  min-width: 100%;
+}
+
+.github-calendar article {
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.github-calendar-loading {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.github-activity-link {
+  display: block;
+  border-top: 1px solid var(--line-strong);
+  padding: 0.8rem 1rem;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-align: right;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.github-activity-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 /* ===== Cases ===== */
 .cases {
   display: grid;
@@ -1499,6 +1590,11 @@ a.case-year:hover {
 		grid-template-columns: 1fr;
 	}
 
+	.github-activity-copy {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
 	.earlier-role,
 	.earlier-role:last-child {
 		border-right: 0;
@@ -1651,6 +1747,10 @@ a.case-year:hover {
 
 	.project-list-head {
 		font-size: 0.64rem;
+	}
+
+	.github-calendar {
+		padding-inline: 1rem;
 	}
 
   .case-meta {

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import GitHubActivity from '../components/GitHubActivity';
 
 import '../styles/home.css';
 
@@ -433,6 +434,24 @@ const structuredData = [
 					</article>
 				))}
 			</div>
+
+			<article class="github-activity reveal" aria-labelledby="github-activity-title">
+				<div class="github-activity-copy">
+					<div>
+						<span class="github-activity-kicker">Live signal · Rolling 12 months</span>
+						<h3 id="github-activity-title">GitHub activity</h3>
+					</div>
+					<p>
+						A live view of the open-source work, experiments, and maintenance happening behind these projects.
+					</p>
+				</div>
+				<div class="github-calendar" aria-label="GitHub contribution activity for padsbanger">
+					<GitHubActivity client:visible />
+				</div>
+				<a class="github-activity-link" href="https://github.com/padsbanger" target="_blank" rel="noopener">
+					View @padsbanger on GitHub ↗
+				</a>
+			</article>
 		</section>
 
 		<section class="section" id="systems">
