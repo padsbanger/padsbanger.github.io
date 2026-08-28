@@ -1,8 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import GitHubActivity from '../components/GitHubActivity';
+import type { Activity } from 'react-activity-calendar';
 
 import '../styles/home.css';
+
+type GitHubContributionsResponse = {
+	contributions: Activity[];
+};
+
+const githubContributions = await fetch('https://github-contributions-api.jogruber.de/v4/padsbanger?y=last')
+	.then(async (response) => {
+		if (!response.ok) {
+			throw new Error(`GitHub contributions request failed with ${response.status}`);
+		}
+
+		return (await response.json() as GitHubContributionsResponse).contributions;
+	})
+	.catch((error) => {
+		console.warn('Unable to load GitHub contribution data during build.', error);
+		return null;
+	});
 
 const experience = [
 	{
@@ -438,7 +456,7 @@ const structuredData = [
 			<article class="github-activity reveal" aria-labelledby="github-activity-title">
 				<div class="github-activity-copy">
 					<div>
-						<span class="github-activity-kicker">Live signal · Rolling 12 months</span>
+						<span class="github-activity-kicker">Updated daily · Rolling 12 months</span>
 						<h3 id="github-activity-title">GitHub activity</h3>
 					</div>
 					<p>
@@ -446,7 +464,11 @@ const structuredData = [
 					</p>
 				</div>
 				<div class="github-calendar" aria-label="GitHub contribution activity for padsbanger">
-					<GitHubActivity client:visible />
+					{githubContributions ? (
+						<GitHubActivity contributions={githubContributions} client:visible />
+					) : (
+						<span class="github-calendar-loading">Contribution data is temporarily unavailable.</span>
+					)}
 				</div>
 				<a class="github-activity-link" href="https://github.com/padsbanger" target="_blank" rel="noopener">
 					View @padsbanger on GitHub ↗

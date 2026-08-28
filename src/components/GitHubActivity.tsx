@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import { GitHubCalendar } from 'react-github-calendar';
+import { ActivityCalendar, type Activity } from 'react-activity-calendar';
 
 type ColorScheme = 'light' | 'dark';
 
 const getColorScheme = (): ColorScheme =>
 	typeof document !== 'undefined' && document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 
-export default function GitHubActivity() {
+type GitHubActivityProps = {
+	contributions: Activity[];
+};
+
+export default function GitHubActivity({ contributions }: GitHubActivityProps) {
 	const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-	const [isMounted, setIsMounted] = useState(false);
 
 	useEffect(() => {
 		const observer = new MutationObserver(() => setColorScheme(getColorScheme()));
 
 		setColorScheme(getColorScheme());
-		setIsMounted(true);
 		observer.observe(document.documentElement, {
 			attributes: true,
 			attributeFilter: ['data-theme'],
@@ -23,13 +25,9 @@ export default function GitHubActivity() {
 		return () => observer.disconnect();
 	}, []);
 
-	if (!isMounted) {
-		return <span className="github-calendar-loading">Loading contribution data…</span>;
-	}
-
 	return (
-		<GitHubCalendar
-			username="padsbanger"
+		<ActivityCalendar
+			data={contributions}
 			colorScheme={colorScheme}
 			blockMargin={4}
 			blockRadius={1}
@@ -43,6 +41,7 @@ export default function GitHubActivity() {
 			labels={{
 				totalCount: '{{count}} contributions in the last year',
 			}}
+			maxLevel={4}
 		/>
 	);
 }
