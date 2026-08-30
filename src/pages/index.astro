@@ -73,27 +73,74 @@ const experience = [
 	},
 ];
 
-const featuredProject = {
-	tag: 'Featured product · TypeScript',
-	title: 'Omnia',
-	version: 'v0.10.0',
-	text: 'A desktop workspace for organizing messaging, email, calendars, music, and productivity tools in one focused, configurable environment.',
-	architecture: 'Electron main, preload, and React renderer layers are separated so privileged desktop APIs stay behind a context-isolated IPC boundary.',
-	platforms: ['Windows', 'macOS', 'Linux'],
-	stack: ['Electron', 'React', 'TypeScript', 'Vite'],
-	download: 'https://github.com/padsbanger/omnia/releases/latest',
-	github: 'https://github.com/padsbanger/omnia',
-	images: [
-		{
-			src: '/images/omnia-workspace.webp',
-			alt: 'Omnia desktop workspace showing Mail, Slack, Calendar, and Spotify in a four-pane grid.',
+const featuredProjects = [
+	{
+		id: 'orchestr',
+		tag: 'Featured product 01 · AI developer tooling',
+		title: 'Orchestr',
+		version: '0.9.0',
+		text: 'A local-first engineering control room for coordinating AI agents across Git-backed planning, isolated implementation, review, validation, and safe integration.',
+		detailLabel: 'Workflow cockpit',
+		detailItems: ['Queue', 'Build', 'Verify & Land', 'Done'],
+		architectureLabel: 'Local-first architecture',
+		architecture: 'React talks to a Tauri host through typed service boundaries, while Rust crates own SQLite persistence, Git operations, worker execution, and the provider boundary.',
+		stack: ['Tauri 2', 'Rust', 'React', 'TypeScript', 'SQLite', 'Git', 'Codex'],
+		primaryAction: {
+			label: 'Download for Windows ↗',
+			href: 'https://github.com/padsbanger/orchestr/releases/latest',
 		},
-		{
-			src: '/images/omnia-communications.webp',
-			alt: 'Omnia desktop workspace showing Gmail, WhatsApp, Calendar, and Telegram in a four-pane grid.',
+		github: 'https://github.com/padsbanger/orchestr',
+		images: [
+			{
+				src: '/images/orchestr-task-inspector.png',
+				alt: 'Orchestr task inspector showing an in-progress task, human input controls, execution state, and activity timeline.',
+				width: 1600,
+				height: 1000,
+				caption: 'Execution & human supervision',
+			},
+			{
+				src: '/images/orchestr-project-progress.png',
+				alt: 'Orchestr project progress view showing integration branch health, workflow counts, and milestone delivery status.',
+				width: 1600,
+				height: 1000,
+				caption: 'Integrated outcome progress',
+			},
+		],
+	},
+	{
+		id: 'omnia',
+		tag: 'Featured product 02 · Desktop productivity',
+		title: 'Omnia',
+		version: '0.11.0',
+		text: 'A desktop workspace for organizing messaging, email, calendars, music, and productivity tools in one focused, configurable environment.',
+		detailLabel: 'Supported platforms',
+		detailItems: ['Windows', 'macOS', 'Linux'],
+		architectureLabel: 'Architecture decision',
+		architecture: 'Electron main, preload, and React renderer layers are separated so privileged desktop APIs stay behind a context-isolated IPC boundary.',
+		stack: ['Electron', 'React', 'TypeScript', 'Vite'],
+		primaryAction: {
+			label: 'Download latest ↗',
+			href: 'https://github.com/padsbanger/omnia/releases/latest',
 		},
-	],
-};
+		github: 'https://github.com/padsbanger/omnia',
+		images: [
+			{
+				src: '/images/omnia-workspace.webp',
+				alt: 'Omnia desktop workspace showing Mail, Slack, Calendar, and Spotify in a four-pane grid.',
+				width: 1586,
+				height: 992,
+				caption: 'Workspace configuration 01',
+			},
+			{
+				src: '/images/omnia-communications.webp',
+				alt: 'Omnia desktop workspace showing Gmail, WhatsApp, Calendar, and Telegram in a four-pane grid.',
+				width: 1586,
+				height: 992,
+				caption: 'Workspace configuration 02',
+			},
+		],
+	},
+];
 
 const sideProjects = [
 	{
@@ -141,6 +188,8 @@ const capabilities = [
 		value: 'Ollama, GitHub Copilot, vLLM, and llama.cpp for local and enterprise AI workflows.',
 	},
 ];
+
+const featuredProjectCount = featuredProjects.length + sideProjects.length;
 
 const aboutItems = [
 	{
@@ -321,8 +370,8 @@ const structuredData = [
 					<span class="metric-label">Engineering<br />organizations</span>
 				</div>
 				<div class="metric">
-					<span class="metric-num">04</span>
-					<span class="metric-label">Open-source<br />projects featured</span>
+					<span class="metric-num">{String(featuredProjectCount).padStart(2, '0')}</span>
+					<span class="metric-label">Public<br />projects featured</span>
 				</div>
 			</div>
 		</section>
@@ -378,64 +427,68 @@ const structuredData = [
 		<section class="section section--alt" id="projects">
 			<div class="section-head">
 				<span class="section-num">02</span>
-				<h2 class="section-title">Side projects</h2>
-				<p class="section-desc">A featured desktop product, followed by focused tools for music workflows and a better web.</p>
+				<h2 class="section-title">Selected projects</h2>
+				<p class="section-desc">Desktop products for supervised AI delivery and focused digital work, plus smaller tools for music workflows and the web.</p>
 			</div>
 
-			<article class="featured-project reveal" aria-labelledby="omnia-title">
-				<div class="featured-project-body">
-					<div class="featured-project-intro">
-						<div class="featured-project-meta">
-							<span>{featuredProject.tag}</span>
-							<span>Current release · {featuredProject.version}</span>
-						</div>
-						<h3 id="omnia-title">{featuredProject.title}</h3>
-						<p>{featuredProject.text}</p>
-						<div class="case-stack" aria-label="Omnia technology stack">
-							{featuredProject.stack.map((item) => <span>{item}</span>)}
-						</div>
-					</div>
+			<div class="featured-projects">
+				{featuredProjects.map((project) => (
+					<article class="featured-project reveal" aria-labelledby={`${project.id}-title`}>
+						<div class="featured-project-body">
+							<div class="featured-project-intro">
+								<div class="featured-project-meta">
+									<span>{project.tag}</span>
+									<span>Current release · {project.version}</span>
+								</div>
+								<h3 id={`${project.id}-title`}>{project.title}</h3>
+								<p>{project.text}</p>
+								<div class="case-stack" aria-label={`${project.title} technology stack`}>
+									{project.stack.map((item) => <span>{item}</span>)}
+								</div>
+							</div>
 
-					<div class="featured-project-details">
-						<div class="featured-project-detail">
-							<span>Supported platforms</span>
-							<ul>
-								{featuredProject.platforms.map((platform) => <li>{platform}</li>)}
-							</ul>
+							<div class="featured-project-details">
+								<div class="featured-project-detail">
+									<span>{project.detailLabel}</span>
+									<ul>
+										{project.detailItems.map((item) => <li>{item}</li>)}
+									</ul>
+								</div>
+								<div class="featured-project-detail">
+									<span>{project.architectureLabel}</span>
+									<p>{project.architecture}</p>
+								</div>
+								<div class="featured-project-actions">
+									<a class="btn btn--solid" href={project.primaryAction.href} target="_blank" rel="noopener">{project.primaryAction.label}</a>
+									<a class="btn btn--ghost" href={project.github} target="_blank" rel="noopener">View GitHub ↗</a>
+								</div>
+							</div>
 						</div>
-						<div class="featured-project-detail">
-							<span>Architecture decision</span>
-							<p>{featuredProject.architecture}</p>
-						</div>
-						<div class="featured-project-actions">
-							<a class="btn btn--solid" href={featuredProject.download} target="_blank" rel="noopener">Download latest ↗</a>
-							<a class="btn btn--ghost" href={featuredProject.github} target="_blank" rel="noopener">View GitHub ↗</a>
-						</div>
-					</div>
-				</div>
 
-				<div class="featured-project-gallery" aria-label="Omnia application screenshots">
-					{featuredProject.images.map((image, index) => (
-						<figure>
-							<a href={image.src} target="_blank" rel="noopener" aria-label={`Open Omnia screenshot ${index + 1} at full resolution`}>
-								<img
-									src={image.src}
-									alt={image.alt}
-									width="1586"
-									height="992"
-									loading="lazy"
-									decoding="async"
-								/>
-							</a>
-							<figcaption>Workspace configuration {String(index + 1).padStart(2, '0')}</figcaption>
-						</figure>
-					))}
-				</div>
-			</article>
+						<div class="featured-project-gallery" aria-label={`${project.title} application screenshots`}>
+							{project.images.map((image, index) => (
+								<figure>
+									<a href={image.src} target="_blank" rel="noopener" aria-label={`Open ${project.title} screenshot ${index + 1} at full resolution`}>
+										<img
+											src={image.src}
+											alt={image.alt}
+											width={image.width}
+											height={image.height}
+											loading="lazy"
+											decoding="async"
+										/>
+									</a>
+									<figcaption>{image.caption}</figcaption>
+								</figure>
+							))}
+						</div>
+					</article>
+				))}
+			</div>
 
 			<div class="project-list-head">
-				<span>More open-source work</span>
-				<span>03 repositories</span>
+				<span>More public work</span>
+				<span>{String(sideProjects.length).padStart(2, '0')} repositories</span>
 			</div>
 			<div class="cases cases--projects">
 				{sideProjects.map((project) => (
