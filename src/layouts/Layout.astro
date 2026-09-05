@@ -90,21 +90,6 @@ gtag('config', ${JSON.stringify(googleAnalyticsId)});`
 					} catch (e) {}
 				})();
 			</script>
-			{jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd}></script>}
-		{
-			googleAnalyticsSnippet && (
-				<>
-					<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
-					<script is:inline set:html={googleAnalyticsSnippet}></script>
-				</>
-			)
-		}
-		<!-- Privacy-friendly analytics by Plausible -->
-		<script async src="https://plausible.io/js/pa-LCmk_cvUxswfaQXbCPo7g.js"></script>
-		<script>
-		window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-		plausible.init()
-		</script>
 		<script
 			defer
 			data-site="michal-lach.pl"
